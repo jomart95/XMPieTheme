@@ -350,3 +350,35 @@ $preview-height-btn-view-proof: 45px;
     height: 100%;
   }
 }
+/* ===== McFaddin: single-static preview hugs the artwork ===== */
+.preview-wrapper.single-static {
+  min-height: 0;
+
+  @media (min-width: theme.$md + 1) {
+    .carousel-root {
+      height: auto;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .carousel-slider,
+    .slider-wrapper,
+    .slider,
+    .slide,
+    .inner-carousel-image-wrapper,
+    .image-wrapper {
+      height: auto;
+    }
+
+    .image-wrapper { padding: 0; }
+
+    .image-wrapper img {
+      display: block;
+      width: auto;
+      height: 70vh;        /* fill height instead of a fixed 35vh box */
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+}

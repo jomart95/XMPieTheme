@@ -66,3 +66,17 @@
     }
   }
 }
+/* ===== McFaddin: grey rail tracks the right column instead of full-viewport ===== */
+@media (min-width: theme.$md + 1) {
+  .product-layout .main-wrapper .left {
+    height: auto;          /* was calc(100vh - header) — let the grid row size it */
+    max-height: none;
+    align-self: stretch;   /* fill the row height set by the right column */
+
+    /* keep the image in view on long pages without forcing the cell tall */
+    .left-container {
+      position: sticky;
+      top: var(--header-height-desktop);
+    }
+  }
+}
