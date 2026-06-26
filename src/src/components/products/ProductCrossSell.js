@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { UStoreProvider } from '@ustore/core'
 import { LinkAria } from '$core-components'
 import { prependServerDomain } from '$themeservices'
-import { getIsNGProduct } from '$themeservices/utils'
 import { decodeStringForURL } from '$ustoreinternal/services/utils'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import './ProductCrossSell.scss'
@@ -24,9 +23,7 @@ const shuffle = (arr) => {
 }
 
 const productUrl = (model) =>
-  getIsNGProduct(model)
-    ? urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-    : urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
+  urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
 
 const ProductCrossSell = ({ excludeId }) => {
   const [products, setProducts] = useState([])

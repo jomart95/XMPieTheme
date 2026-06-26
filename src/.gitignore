@@ -30,3 +30,6 @@ sample2.pdf
 sample3.pdf
 
 dist_for_wc
+out/
+out_wc/
+dist/
