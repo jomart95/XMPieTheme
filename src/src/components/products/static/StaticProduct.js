@@ -569,9 +569,8 @@ const StaticProduct = ({
     else setPostLoadingProcedures(false)
   }, [pageState])
 
-  const cleanCustomState = () => {
-    ['currentProduct',
-      'currentOrderItem',
+const cleanCustomState = () => {
+    ['currentOrderItem',
       'currentOrderItemId',
       'currentOrderItemPriceModel',
       'lastOrder',

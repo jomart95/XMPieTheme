@@ -39,9 +39,9 @@ const Products = (props) => {
       const product = await UStoreProvider.api.products.getProductByID(productID)
 
       UStoreProvider.state.customState.setBulk({ currentProduct: product,currentOrderItemId: orderItemID})
-    })()
+})()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [params.id])
 
   if (!props.state || !props.customState) {
     return <Layout {...props}>
