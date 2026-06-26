@@ -1,0 +1,58 @@
+@use "_theme.scss";
+
+.undo-redo-block {
+  display: flex;
+}
+
+.zoom-block {
+  display: flex;
+  margin-left: 16px;
+  @media (max-width: theme.$md) {
+    display: none;
+  }
+}
+
+.icon-btn.truncate {
+  overflow: visible;
+
+  &:hover {
+    @media (min-width: theme.$md) {
+      .uedit-tooltip {
+        display: flex;
+      }
+    }
+  }
+}
+
+.uEdit-general-controls {
+  .hidden-tools {
+    display: none;
+  }
+
+  .zoom-block {
+    .tool-title {
+      display: none;
+    }
+    &.advanced-on {
+      @media (max-width: 875px) {
+        display: none;
+      }
+    }
+
+  }
+
+  .undo-redo-block {
+    .tool-title {
+      display: none;
+    }
+    &.advanced-on {
+      @media  (max-width: 400px) or ((min-width: theme.$md) and (max-width: 932px)) {
+        display: none;
+      }
+    }
+  }
+
+  .hidden-tools-mobile-wrapper {
+    position: absolute;
+  }
+}

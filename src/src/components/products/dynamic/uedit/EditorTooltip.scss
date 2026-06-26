@@ -1,0 +1,101 @@
+@use "_theme.scss";
+
+.uedit-tooltip {
+  font-size: var(--text-size-regular);
+  font-family: var(--font-family);
+  color: var(--text-color-dark);
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50px;
+  z-index: 2;
+  padding: 15px;
+  background-color: var(--color-fill);
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid var(--color-line);
+  white-space: normal;
+  justify-content: center;
+  box-shadow: 0px 0px 4px 0px #00000026;
+
+  &:after {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: var(--color-fill);
+    border-bottom: inherit;
+    border-right: inherit;
+    transform: rotate(225deg);
+    bottom: calc(100% - 7px);
+    left: calc(50% - 7px);
+    display: inherit;
+    box-shadow: 1px 1px 3px -2px #d6d6d6;
+    border: solid var(--color-line);
+    border-width: 0 1px 1px 0;
+    @media (max-width: theme.$md) {
+      bottom: initial;
+      top: calc(100% - 7px);
+      transform: rotate(45deg);
+      left: calc(50% - 7px);
+    }
+  }
+}
+
+.uedit-preview-tooltip-click-wrapper {
+  .uedit-tooltip {
+    left: -82px;
+    opacity: 1;
+    visibility: visible;
+  }
+  @media (max-width: theme.$md) {
+    position: relative;
+    .uedit-tooltip {
+      left: -110;
+      top: initial;
+      bottom: 30px;
+    }
+  }
+}
+
+.text-section, .image-section, .shape-controls, {
+  .ador-list .dropdown-wrapper {
+    width: 100%;
+  }
+  .color-swatch-icon, .button.truncate {
+    &:hover {
+      @media (min-width: theme.$md) {
+        &, .color-swatch-icon {
+          box-shadow: 2px 2px 4px 0px #00000040;
+        }
+      }
+    }
+  }
+  .button.truncate, .dropdown-wrapper, .color-selector {
+    position: relative;
+    overflow: visible;
+    .uedit-tooltip {
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &:hover {
+      @media (min-width: theme.$md) {
+        .uedit-tooltip {
+          visibility: visible;
+          opacity: 1;
+          transition: opacity 0.1s ease 0.8s, visibility 0s linear 0.8s
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: theme.$lg) {
+  .hidden-tools.show {
+    .uedit-tooltip {
+      display: none !important;
+    }
+  }
+}

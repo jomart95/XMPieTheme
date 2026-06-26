@@ -1,0 +1,26 @@
+@use "_theme.scss";
+
+.cart-item-properties {
+  font-size: var(--text-size-fineprint);
+  color: var(--text-color-dark);
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 10px;
+
+  @media (max-width: theme.$md) {
+    margin-top: 0;
+  }
+
+  .property {
+    font-size: var(--text-size-fineprint);
+    color: var(--text-color-dark);
+    margin: 0;
+  }
+
+
+  .recipients {
+    margin-top: 8px;
+  }
+
+}

@@ -1,0 +1,47 @@
+@use "_theme.scss";
+
+
+.toggle-btn-wrapper {
+  background-color: var(--button-primary-background-color);
+  border: 1px solid var(--button-primary-border-color);
+  padding: 4px 5px;
+  border-radius: 24px;
+  height: 40px;
+  display: flex;
+  margin: 30px auto 0;
+  width: fit-content;
+  gap: 2px;
+
+  @media (max-width: theme.$md) {
+    width: fit-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .left-btn, .right-btn {
+    position: relative;
+    background-color: var(--button-primary-background-color);
+    color: #FFF;
+    border: none;
+    height: 100%;
+    border-radius: 20px;
+    padding: 4px 15px;
+    font-size: var(--text-size-regular);
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .active {
+    background-color: #FFF;
+    color: var(--text-color-dark);
+    border: 1px solid var(--button-primary-border-color);
+  }
+}
+
+.paginator-wrapper-toggle-button {
+  background-color: var(--color-fill);
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 1px;
+}

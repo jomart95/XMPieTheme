@@ -1,0 +1,98 @@
+@use '_theme.scss';
+
+.product-instance-properties {
+  .section {
+    border: 1px solid var(--color-line);
+    border-left: 2px solid var(--text-color-medium);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+
+    &.section-open {
+      border-left: 2px solid var(--color-highlight);
+
+      .section-content {
+        padding-top: 15px;
+        max-height: var(--openSection);
+      }
+
+    }
+
+    &:not(:nth-child(2)) {
+      margin-top: 30px;
+    }
+
+    & .hidden {
+      display: none;
+    }
+  }
+  .section:not(.section-open) {
+
+    .section-header {
+      color: var(--text-color-ultra-dark);
+
+      .section-title {
+        margin-right: 20px;
+      }
+    }
+  }
+  .section-header {
+    cursor: pointer;
+    color: var(--color-text);
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+  }
+  .section-header > svg {
+    margin-left: 20px;
+    flex-shrink: 0;
+  }
+  .section-open .section-header {
+    color: var(--color-highlight);
+  }
+
+  .section-title {
+    align-items: center;
+    display: flex;
+    font-size: var(--text-size-label);
+
+    .section-title-text {
+      margin-left: 14px;
+      @media (max-width: theme.$md) {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  .section-tick-icon {
+    path:first-of-type {
+      fill: var(--color-success);
+    }
+  }
+
+  .section-pencil-icon {
+    path {
+      fill: var(--color-icon);
+    }
+  }
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    transition: max-height .3s, padding-top 0.3s;
+    overflow: hidden;
+    max-height: 0;
+ }
+
+  .section-error-msg {
+    color: var(--color-error);
+    padding-top: 4px;
+  }
+  .section-description {
+    margin: 25px 0 15px;
+    font-size: var(--text-size-regular);
+    color: var(--text-color-dark);
+  }
+}

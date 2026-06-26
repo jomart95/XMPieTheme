@@ -1,0 +1,59 @@
+@use "_theme.scss";
+
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &.connect {
+    .main-content {
+      @media (min-width: theme.$lg) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1 auto;
+
+    @media (min-width: theme.$lg) {
+      padding-top: var(--header-height-desktop);
+    }
+
+    // @media (min-width: $md) and (max-width: $lg) {
+    //   padding-top: calc(var(--header-height-mobile) + var(--search-height));
+    // }
+  }
+}
+/* MCF base — top utility bar (Powered by McFaddin + store URL) */
+.mcf-utility-bar {
+  background: var(--surface-dark-color);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: var(--text-size-fineprint);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 24px;
+  height: 34px;
+  box-sizing: border-box;
+
+  .mcf-utility-brand {
+    color: var(--accent-secondary);
+    font-weight: 500;
+  }
+
+  .mcf-utility-url { opacity: 0.85; }
+
+  @media (min-width: theme.$lg) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+  @media (max-width: 600px) {
+    .mcf-utility-url { display: none; }
+  }
+}

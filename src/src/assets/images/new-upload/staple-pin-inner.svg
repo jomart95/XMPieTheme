@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38" height="334" viewBox="0 0 38 334">
+    <defs>
+        <filter id="Ellipse_28" x="-8" y="-8" width="54" height="54" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Ellipse_29" x="-8" y="288" width="54" height="54" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="4" result="blur-2"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur-2"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <clipPath id="clip-inner_page_-_2_2">
+            <rect width="38" height="334"/>
+        </clipPath>
+    </defs>
+    <g id="inner_page_-_2_2" data-name="inner page - 2 – 2" clip-path="url(#clip-inner_page_-_2_2)">
+        <g id="Group_468" data-name="Group 468" transform="translate(-689 -233)">
+            <g transform="matrix(1, 0, 0, 1, 689, 233)" filter="url(#Ellipse_28)">
+                <g id="Ellipse_28-2" data-name="Ellipse 28" transform="translate(8 8)" stroke="#6f6f6f" stroke-width="4">
+                    <circle cx="11" cy="11" r="11" stroke="none"/>
+                    <circle cx="11" cy="11" r="13" fill="none"/>
+                </g>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 689, 233)" filter="url(#Ellipse_29)">
+                <g id="Ellipse_29-2" data-name="Ellipse 29" transform="translate(8 304)" stroke="#6f6f6f" stroke-width="4">
+                    <circle cx="11" cy="11" r="11" stroke="none"/>
+                    <circle cx="11" cy="11" r="13" fill="none"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

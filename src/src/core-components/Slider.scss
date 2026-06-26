@@ -1,0 +1,271 @@
+@use '_theme.scss';
+
+.slider {
+  --content-xl: '{`items`: 6}';
+  --content-lg: '{`items`: 6}';
+  --content-md: '{`items`: 5.5}';
+  --content-sm: '{`items`: 4.5}';
+  --content-xs: '{`items`: 2.5}';
+}
+
+.slider-wrapper-single {
+  overflow: hidden;
+
+  .slider {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    & > * {
+      flex-grow: 1;
+      flex-shrink: 0;
+      overflow: hidden;
+      flex-basis: 100%;
+    }
+  }
+
+  .left-btn {
+    position: relative;
+    opacity: 0;
+    transform: scaleX(-1);
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .right-btn {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .dots {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .dot {
+      box-sizing: border-box;
+      height: 10px;
+      width: 10px;
+      margin: 0px 5px;
+      border-radius: 50%;
+      border: 1px solid #000000;
+      background-color: #000000;
+      opacity: 0.5;
+
+      &.active {
+        border: 1px solid #ffffff;
+        background-color: #ffffff;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (min-width: theme.$xl) {
+    &:hover {
+      .arrows {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (min-width: theme.$lg) and (max-width: theme.$xl) {
+    &:hover {
+      .arrows {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (min-width: theme.$md) and (max-width: theme.$lg) {
+    &:hover {
+      .arrows {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (min-width: theme.$sm) and (max-width: theme.$md) {
+    &:hover {
+      .arrows {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+    &:hover {
+      .arrows {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (max-width: theme.$xs) {
+    &:hover {
+      .arrows {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.slider-wrapper-multi {
+  overflow: hidden;
+  margin: 0 auto;
+  padding-top: 2px;
+
+  .arrows {
+    width: 30px;
+  }
+
+  .left-btn {
+    position: relative;
+    left: 20px;
+    bottom: 185px;
+    transform: scaleX(-1);
+    cursor: pointer;
+  }
+
+  .right-btn {
+    position: relative;
+    bottom: calc(185px + 30px);
+    cursor: pointer;
+  }
+
+  .slider {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    & > * {
+      flex-grow: 0;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: theme.$lg) {
+    width: 1160px;
+  }
+
+  @media (min-width: theme.$xl) {
+    .slider {
+      & > * {
+        padding: 0px 7.5px;
+      }
+
+      &:after {
+        display: none;
+        content: var(--content-xl);
+      }
+    }
+
+    .arrows {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: theme.$lg) and (max-width: theme.$xl) {
+    .slider {
+      & > * {
+        padding: 0px 7.5px;
+      }
+
+      &:after {
+        display: none;
+        content: var(--content-lg);
+      }
+    }
+
+    .arrows {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: theme.$md) and (max-width: theme.$lg) {
+    width: 727px;
+
+    .slider {
+      & > * {
+        padding: 0px 5px;
+      }
+
+      &:after {
+        display: none;
+        content: var(--content-md);
+      }
+    }
+
+    .left-btn {
+      bottom: 155px;
+    }
+
+    .right-btn {
+      bottom: calc(155px + 30px);
+    }
+
+    .arrows {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: theme.$sm) and (max-width: theme.$md) {
+    width: 536px;
+
+    .slider {
+      & > * {
+        padding: 0px 5px;
+      }
+      
+      &:after {
+        display: none;
+        content: var(--content-sm);
+      }
+    }
+    
+    .arrows {
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+    width: 300px;
+
+    .slider {
+      & > * {
+        padding: 0px 5px;
+      }
+      
+      &:after {
+        display: none;
+        content: var(--content-xs);
+      }
+    }
+    
+    .arrows {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: theme.$xs) {
+    width: 300px;
+    
+    .slider {
+      & > * {
+        padding: 0px 5px;
+      }
+      
+      &:after {
+        display: none;
+        content: var(--content-xs);
+      }
+    }
+    
+    .arrows {
+      opacity: 0;
+    }
+  }
+}

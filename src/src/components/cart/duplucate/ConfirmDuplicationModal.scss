@@ -1,0 +1,78 @@
+@use '_theme.scss';
+
+.confirm-list-duplication-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-dialog {
+    max-width: 538px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .close-modal {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      @media (max-width: theme.$sm) {
+        padding: 13px 20px;
+        align-items: center;
+      }
+
+      .close-button {
+        border: none;
+        background: none;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .modal-body {
+      padding: 0 20px 50px 20px;
+    }
+
+    .label {
+      color: var(--text-color-ultra-dark);
+      font-size: var(--text-size-label);
+      line-height: 20px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      justify-content: center;
+      align-items: center;
+
+      .button {
+        max-width: 320px;
+        height: 40px;
+        padding: 3px 10px;
+        width:100%;
+      }
+
+      .confirm-list-duplication-modal-desktop-confirm {
+        margin-bottom: 15px;
+        display: block;
+        @media (max-width: theme.$lg) {
+          display: none;
+        }
+      }
+      .confirm-list-duplication-modal-mobile-confirm {
+        margin-bottom: 15px;
+        display: none;
+        @media (max-width: theme.$lg) {
+          display: block;
+        }
+      }
+
+    }
+
+  }
+}

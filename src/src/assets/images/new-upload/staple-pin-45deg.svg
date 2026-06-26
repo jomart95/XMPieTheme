@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 256 256">
+  <defs>
+    <filter id="Ellipse_32" x="199.646" y="-9.657" width="66.426" height="66.426" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_33" x="-9.656" y="199.647" width="66.426" height="66.426" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur-2"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="1" y1="0.978" x2="0" y2="0.978" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#53565a"/>
+      <stop offset="0.251" stop-color="#fff"/>
+      <stop offset="0.488" stop-color="#adafb1"/>
+      <stop offset="0.725" stop-color="#fff"/>
+      <stop offset="1" stop-color="#53565a"/>
+    </linearGradient>
+    <filter id="Rectangle_113" x="1.121" y="1.121" width="254.174" height="254.174" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-_45_first_page_1">
+      <rect width="256" height="256"/>
+    </clipPath>
+  </defs>
+  <g id="_45_first_page_1" data-name="45 first page – 1" clip-path="url(#clip-_45_first_page_1)">
+    <g id="Group_466" data-name="Group 466" transform="translate(5 5)">
+      <g id="Group_459" data-name="Group 459" transform="translate(-7.953 -29.584)">
+        <g id="Group_455" data-name="Group 455">
+          <g transform="matrix(1, 0, 0, 1, 2.95, 24.58)" filter="url(#Ellipse_32)">
+            <g id="Ellipse_32-2" data-name="Ellipse 32" transform="translate(232.86 8) rotate(45)" stroke="#6f6f6f" stroke-width="4">
+              <circle cx="11" cy="11" r="11" stroke="none"/>
+              <circle cx="11" cy="11" r="13" fill="none"/>
+            </g>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 2.95, 24.58)" filter="url(#Ellipse_33)">
+            <g id="Ellipse_33-2" data-name="Ellipse 33" transform="translate(23.56 217.3) rotate(45)" stroke="#6f6f6f" stroke-width="4">
+              <circle cx="11" cy="11" r="11" stroke="none"/>
+              <circle cx="11" cy="11" r="13" fill="none"/>
+            </g>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 2.95, 24.58)" filter="url(#Rectangle_113)">
+            <g id="Rectangle_113-2" data-name="Rectangle 113" transform="translate(230.74 10.12) rotate(45)" stroke="#53565a" stroke-width="1" fill="url(#linear-gradient)">
+              <rect width="22" height="312" rx="10" stroke="none"/>
+              <rect x="0.5" y="0.5" width="21" height="311" rx="9.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,172 @@
+@use "_theme.scss";
+@import "@ustore/uedit/dist/style.css";
+
+.uedit-editor-preview {
+  height: calc(100% - 104px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  position: relative;
+  overflow: auto;
+  @media (width < theme.$md + 1) {
+    height: 100%;
+  }
+}
+
+#uEdit {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: #FFF;
+  display: grid;
+  place-items: center;
+  text-align: initial !important;
+  @media (width < theme.$md + 1) {
+    background-color: var(--color-fill);
+  }
+}
+
+.main-wrapper.dynamic.uedit  {
+  @media (min-width: theme.$md + 1) and (max-width: theme.$lg) {
+    overflow-y: scroll;
+    height: calc(100vh - var(--header-height-mobile));
+    .right {
+      height: fit-content;
+      min-height: 100%;
+    }
+    .left {
+      top: 0;
+    }
+  }
+  @media (max-width: theme.$md) {
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+    height: calc(100vh - var(--header-height-mobile));
+    .static-order-summary {
+      width: calc(100% - 60px);
+    }
+  }
+}
+
+#uedit-wrapper {
+  height: 100%;
+  @media (max-width: theme.$lg) {
+    margin: 0;
+    height: calc(100% - 30px);
+  }
+  @media (max-width: theme.$md) {
+    margin-top: initial;
+    height: 100%;
+  }
+  .uedit-control-panel-and-preview {
+    @media (width < theme.$md + 1) {
+      display: flex;
+      flex-direction: column-reverse;
+      height: 40vh;
+    }
+  }
+}
+#uEditControl {
+  box-shadow: none;
+  border: 1px solid var(--color-line);
+
+  @media (max-width: theme.$md) {
+    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.uedit-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  li {
+    list-style: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: #FFFFFF;
+    border: 1px solid #D6D6D6;
+    margin-right: 12px;
+
+    &.active {
+      border: 1px solid #139FC8;
+      background: #139FC8;
+      color: #FFFFFF;
+    }
+
+    &:last-child, &:first-child {
+      background: none;
+      border: none;
+
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+    }
+
+  }
+
+}
+.approval-checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: var(--text-size-label);
+  color: var(--text-color-dark);
+  margin: 0 40px 20px 40px;
+  width: 100%;
+
+  @media (max-width: theme.$lg) {
+    width: 100%;
+    margin-left: 30px;
+  }
+
+  .checkbox-label {
+    vertical-align: top;
+  }
+
+  .required {
+    color: #ff625a;
+    margin-left: 5px;
+  }
+
+  input {
+    cursor: pointer;
+    border: 1px solid var(--color-line);
+    margin-right: 8px;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    color: var(--color-line);
+  }
+}
+.proof-approval-required {
+  color: var(--color-error);
+  font-size: var(--text-size-regular);
+  margin: 0 40px 20px 40px;
+  width: 100%;
+
+  @media (max-width: theme.$lg) {
+    width: 100%;
+    margin-left: 30px;
+  }
+}
+
+#component-root {
+  #uedit-wrapper {
+    height: calc(100% - 60px);
+
+    .uedit-control-panel-and-preview {
+        height: calc(100% - 60px);
+    }
+  }
+}

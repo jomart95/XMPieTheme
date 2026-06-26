@@ -1,0 +1,98 @@
+@use '_theme.scss';
+
+.category {
+  .main-content {
+    margin: 0 auto;
+
+    @media (min-width: theme.$lg) {
+      width: 1160px;
+    }
+
+    @media (min-width: theme.$md) and (max-width: theme.$lg) {
+      width: 727px;
+    }
+
+    @media (min-width: theme.$sm) and (max-width: theme.$md) {
+      width: 536px;
+    }
+
+    @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+      width: 300px;
+    }
+  }
+
+  .title{
+    font-size: var(--text-size-h2);
+    color: var(--text-color-heading);
+    margin: auto;
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .categories-wrapper {
+    width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: theme.$xl) {
+      padding: 55px 0 12px 0;
+    }
+
+    @media (min-width: theme.$lg) and (max-width: theme.$xl) {
+      padding: 55px 0 12px 0;
+    }
+
+    @media (min-width: theme.$md) and (max-width: theme.$lg) {
+      padding: 40px 0 12px 0;
+    }
+
+    @media (min-width: theme.$sm) and (max-width: theme.$md) {
+      padding: 40px 0 12px 0;
+    }
+
+    @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+      padding: 40px 0 12px 0;
+    }
+
+    @media (max-width: theme.$xs) {
+      padding: 40px 0 12px 0;
+    }
+  }
+
+  .divider{
+    height: 1px;
+    margin: 0 auto;
+    background: var(--color-line);
+  }
+
+  .featured-products-wrapper {
+    width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: theme.$xl) {
+      padding: 55px 0;
+    }
+
+    @media (min-width: theme.$lg) and (max-width: theme.$xl) {
+      padding: 55px 0;
+    }
+
+    @media (min-width: theme.$md) and (max-width: theme.$lg) {
+      padding: 40px 0;
+    }
+
+    @media (min-width: theme.$sm) and (max-width: theme.$md) {
+      padding: 40px 0;
+    }
+
+    @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+      padding: 40px 0;
+    }
+
+    @media (max-width: theme.$xs) {
+      padding: 40px 0;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,95 @@
+@use "_theme.scss";
+@import "react-loading-skeleton/dist/skeleton.css";
+
+.cart-item-skeleton {
+  padding: 20px;
+  border-bottom: 2px solid var(--color-line);
+  display: flex;
+  flex-direction: row;
+  height: 140px;
+
+  .thumbnail {
+    width: 166px;
+    min-width: 166px;
+    height: 100px;
+    margin-right: 15px;
+  }
+
+  .skeleton {
+    --base-color: var(--skeleton-base-color);
+    --highlight-color: var(--skeleton-highlight-color);
+  }
+
+  .description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      width: 162px;
+      height: 32px;
+      margin-bottom: 15px;
+    }
+
+    .description-1 {
+      width: 80%;
+      height: 20px;
+      margin-bottom: 15px;
+    }
+
+    .description-2 {
+      width: 100%;
+      height: 20px;
+    }
+
+    .description-3 {
+      display: none;
+
+      @media (max-width: theme.$md) {
+        display: block;
+      };
+    }
+  }
+}
+
+@media (min-width: theme.$xs) and (max-width: theme.$sm) {
+  .cart-item-skeleton {
+    padding: 20px;
+
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      min-width: 100px;
+      margin-right: 15px;
+    }
+
+    .description {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        width: 125px;
+        height: 18px;
+        margin-bottom: 10px;
+      }
+
+      .description-1 {
+        width: 151px;
+        height: 18px;
+        margin-bottom: 10px;
+      }
+
+      .description-2 {
+        width: 108;
+        height: 18px;
+        margin-bottom: 10px;
+      }
+
+      .description-3 {
+        width: 148px;
+        height: 18px;
+      }
+    }
+  }
+}

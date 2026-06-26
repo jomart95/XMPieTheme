@@ -1,0 +1,96 @@
+@use '_theme.scss';
+
+.menu-button {
+  position: relative;
+  border: none;
+  background: none;
+  margin-right: 20px;
+  padding: 0;
+
+  @media (min-width: theme.$lg) {
+    display: none;
+  }
+
+  .menu-icon-container {
+
+    cursor: pointer;
+    align-self: center;
+
+    .menu-icon {
+      path {
+        fill: var(--text-color-header);
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+    top: 0;
+    left: 0;
+
+  .drawer-overlay {
+    display: block;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .drawer-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    background: #ffffff;
+    width: 300px;
+    height: 100%;
+    z-index: 3;
+    box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
+    color: var(--text-color-ultra-dark);
+    animation: slideIn 0.5s ease-in-out;
+
+    &.slide-out {
+      animation: slideOut 0.5s ease-in-out;
+    }
+
+    .categories-sidebar {
+      display: inline;
+      width: 100%;
+    }
+
+    .signout {
+      height: 60px;
+
+      .info > .title {
+        display: none !important;
+      }
+    }
+  }
+
+}
+
+@keyframes slideIn {
+  from {
+    left: -330px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    left: 0;
+  }
+  to {
+    left: -330px;
+  }
+}
+
+

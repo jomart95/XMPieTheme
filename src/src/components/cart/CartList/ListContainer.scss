@@ -1,0 +1,57 @@
+@use "_theme.scss";
+
+.cart-list-container {
+  padding: 50px;
+  width: 75%;
+
+  @media (max-width: theme.$xl) {
+    padding: 50px 30px 0 30px;
+  }
+
+  @media (max-width: theme.$lg) {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wish-list .list-title {
+    @media (min-width: theme.$sm) and (max-width: theme.$lg) {
+      margin-top: 50px;
+      margin-bottom: 0px;
+    }
+
+    @media (min-width: theme.$sm) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .cart-summary-mobile {
+    display: none;
+
+    @media (max-width: theme.$lg) {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .cart-summary-mobile:has(.cart-summary-lists-mode)  {
+    display: block;
+
+    @media (max-width: theme.$lg) {
+      display: none;
+    }
+  }
+}
+
+.skelaton-cart-list-container {
+  width: 100%;
+
+  .cart-list-container {
+    width:100%
+  }
+
+  .empty-cart-button {
+    display: none;
+  }
+}

@@ -1,0 +1,62 @@
+@use "_theme.scss";
+
+.image-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .animated {
+    width: inherit;
+    height: inherit;
+  }
+
+  .show {
+    display: inline;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  img {
+    object-fit: inherit;
+    width: inherit;
+    height: inherit;
+  }
+
+  .loading {
+    background: linear-gradient(90deg, #eeeeee, #cfcfcf);
+    background-size: 400% 400%;
+    animation: Gradient 5s ease infinite;
+    .loading-dots{
+      color: #0a246a;
+    }
+  }
+
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  &.zoomIn {
+    cursor: zoom-in;
+  }
+
+  &.zoomOut {
+    cursor: zoom-out;
+  }
+
+  &.panning {
+    cursor: move;
+  }
+
+}

@@ -1,0 +1,285 @@
+@use "_theme.scss";
+
+.product-item {
+  font-size: var(--text-size-regular);
+  color: var(--text-color-ultra-dark);
+  display: flex;
+  flex-direction: column;
+
+  .product-name {
+    margin: 5px 0 2px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    /* MCF base: condensed uppercase headline treatment */
+    font-family: var(--font-family-condensed, var(--font-family));
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text-color-heading);
+    .defaultStylesTooltip {
+      max-width: 100%;
+      .tooltip-title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+
+  /* MCF base: product-type pill */
+  .product-type {
+    margin: 2px 0 6px 0;
+  }
+
+  .product-type-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-size-fineprint);
+    font-weight: 500;
+    line-height: 1;
+    padding: 4px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+
+    &.is-ready {
+      background: var(--color-fill);
+      color: var(--text-color-medium);
+    }
+
+    &.is-custom {
+      background: var(--white);
+      color: var(--color-highlight);
+      border: 1px solid var(--color-highlight);
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .price {
+    color: var(--color-highlight);
+    margin-right: 20px;
+    font-size: var(--text-size-regular);
+  }
+
+  .icon-wrapper {
+    height: 33px;
+    width: 33px;
+    background-color: var(--color-highlight);
+    border-radius: 50%;
+    padding: 4px;
+    margin-left: 20px;
+    }
+
+  .anchor-flex-end{
+    flex-grow: 1;
+  }
+
+  .add-to-cart{
+    display: flex;
+    flex-direction: column;
+    min-height: 70px;
+    align-items: center;
+    margin: 13px 5px 0 5px;
+
+    .add-to-cart-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .add-to-cart-button-wrapper {
+        margin-top: 10px;
+
+        /* MCF base: filled navy Add to cart (overrides the outline secondary, card-scoped) */
+        .button-secondary {
+          background-color: var(--surface-dark-color);
+          border-color: var(--surface-dark-color);
+          color: var(--white);
+
+          &:hover,
+          &:active {
+            color: var(--white);
+          }
+
+          .loading-dots div {
+            background-color: var(--white);
+          }
+        }
+
+        .add-to-cart-button {
+          min-width: 175px;
+          max-width: 270px;
+          height: 35px;
+          line-height: normal;
+          padding: unset;
+          display: flex;
+
+          span {
+            margin: auto;
+          }
+
+          @media (min-width: theme.$md) and (max-width: theme.$lg)  {
+            max-width: 222px;
+          }
+          @media (min-width: theme.$sm) and (max-width: theme.$md) {
+            max-width: 248px;
+          }
+          @media (max-width: theme.$sm) {
+            display: none;
+          }
+        }
+
+        .add-to-cart-button-aria {
+          min-width: 175px;
+          max-width: 270px;
+          height: 35px;
+          line-height: normal;
+          padding: unset;
+
+          span {
+            margin: auto;
+          }
+
+          @media (min-width: theme.$md) and (max-width: theme.$lg)  {
+            max-width: 222px;
+          }
+          @media (min-width: theme.$sm) and (max-width: theme.$md) {
+            max-width: 248px;
+          }
+          @media (max-width: theme.$sm) {
+            display: none;
+          }
+        }
+
+        .add-button {
+          min-width: 135px;
+          height: 35px;
+          line-height: normal;
+          max-width: 135px;
+
+          @media (min-width: theme.$sm) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .add-to-cart-success{
+      margin: auto;
+      color: var(--color-success);
+      font-size: var(--text-size-label);
+      display: flex;
+      text-align: center;
+      animation: fadeInFadeOut 3s;
+      animation-fill-mode: forwards;
+
+      @keyframes fadeInFadeOut {
+        0% {
+          opacity: 0;
+        }
+        40% {
+          opacity: 1;
+        }
+        80%{
+          opacity: 1;
+        }
+        95% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: theme.$sm){
+        font-size: var(--text-size-fineprint);
+      }
+
+      .success-checkmark-icon-wrapper{
+        margin: 0 5px 0 5px;
+        .icon-holder {
+          width: unset !important;
+          text-align: center;
+        }
+
+        .success-checkmark-icon{
+          fill: var(--color-success);
+        }
+      }
+    }
+  }
+
+  .product-price {
+    color: var(--color-highlight);
+
+    .loading-dots {
+      height: 10px;
+
+      .loading-dot {
+        background: var(--color-highlight);
+      }
+    }
+  }
+
+  .inventory {
+    font-size: var(--text-size-fineprint);
+  }
+
+  .image-wrapper {
+    border: var(--image-box-border-width) solid var(--image-box-border-color);
+    background: var(--image-box-background-color);
+    position: relative;
+    cursor: pointer;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .product-description {
+    font-size: var(--text-size-fineprint);
+    color: var(--text-color-medium);
+  }
+
+  @media (min-width: theme.$lg) {
+    .image-wrapper {
+      padding: var(--image-box-padding);
+      height: var(--image-box-height);
+    }
+  }
+
+  @media (min-width: theme.$md) and (max-width: theme.$lg) {
+    .image-wrapper {
+      padding: var(--image-box-padding);
+      height: calc(var(--image-box-height) * 0.833);
+    }
+  }
+
+  @media (min-width: theme.$sm) and (max-width: theme.$md) {
+    .image-wrapper {
+      padding: var(--image-box-padding);
+      height: calc(var(--image-box-height) * 0.931);
+    }
+  }
+
+  @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+    .image-wrapper {
+      padding: calc(0.5 * var(--image-box-padding));
+      height: calc(var(--image-box-height) * 0.527);
+    }
+  }
+
+  @media (max-width: theme.$xs) {
+    &:hover {
+      .arrow-btns {
+        opacity: 0;
+      }
+    }
+  }
+}

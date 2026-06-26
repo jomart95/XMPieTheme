@@ -1,0 +1,117 @@
+@use '_theme.scss';
+
+.included-products-details {
+  display: inline-block;
+  width: fit-content;
+  order: 2;
+  .title {
+    font-size: 12px;
+    color: var(--button-primary-background-color);
+    font-family: var(--font-family);
+    display: none;
+    @media (min-width: theme.$lg) {
+      &.desktop {
+        margin-top: 8px;
+        display: inline-block;
+      }
+    }
+    @media (max-width: theme.$lg) {
+      &.mobile {
+        display: inline-block;
+      }
+    }
+
+  }
+
+  @media (min-width: theme.$lg) {
+    &:hover {
+      .details {
+        z-index: 2;
+        display: inline-block;
+      }
+    }
+
+    .tittle:hover + .details {
+      display: inline-block;
+    }
+  }
+
+  .details {
+    font-size: 14px;
+    color: var(--text-color-medium);
+    background-color: var(--white);
+    border: 1px solid var(--color-line);
+    box-shadow: 0 0 4px 0 #d6d6d6;
+    border-radius: 7px;
+    display: none;
+    width: 240px;
+    position: absolute;
+    top: 80px;
+    max-height: 170px;
+    left: 100px;
+    padding: 20px 0;
+    z-index: 1;
+
+    @media (max-width: theme.$lg) {
+      top: 90px;
+      left: 70px;
+    }
+    @media (max-width: theme.$md) {
+      top: 120px;
+    }
+
+
+    &.show {
+      display: inline-block;
+    }
+
+    .scroll-wrapper {
+      height: 100%;
+      padding: 0 20px;
+      .product-detail{
+        margin-bottom: 5px;
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+      &.scroll-able {
+        overflow-y: scroll;
+        max-height: 130px;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 15%;
+      top: -15%;
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 15px;
+      background: var(--white);
+      border-bottom: inherit;
+      border-right: inherit;
+      transform: rotate(225deg);
+      bottom: calc(100% - 7px);
+      left: 50%;
+      display: inherit;
+      box-shadow: 1px 1px 3px -2px #d6d6d6;
+      border: solid var(--color-line);
+      border-width: 0 1px 1px 0;
+    }
+
+    .product-name {
+      overflow: hidden;
+
+      color: #000;
+    }
+    .product-quantity {
+      font-size: 12px;
+      color: var(--text-color-medium);
+    }
+  }
+}

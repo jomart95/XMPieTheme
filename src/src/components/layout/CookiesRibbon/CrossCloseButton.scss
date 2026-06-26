@@ -1,0 +1,14 @@
+@use "_theme.scss";
+
+.cross-close-button-container {
+  cursor: pointer;
+
+  .cross-close-button {
+    vertical-align: top;
+
+    .icon svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

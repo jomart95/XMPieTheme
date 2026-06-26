@@ -1,0 +1,44 @@
+@use "sass:meta";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@include meta.load-css("variables");
+@include meta.load-css("fonts");
+@include meta.load-css("theme");
+@include meta.load-css("input");
+@include meta.load-css("buttons");
+@include meta.load-css("truncate");
+@include meta.load-css("tooltip");
+@include meta.load-css("dropdown");
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+
+@mixin body-styling() {
+  margin: 0;
+  min-width: 320px;
+  background-color: #ffffff;
+  font-size: var(--text-size-regular);
+  font-family: var(--font-family);
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%; //fix for iOS
+
+  div[data-testid="underlay"] {
+    display:none;
+  }
+}
+
+body.xmpie-theme {
+  @include body-styling();
+
+  *:focus {
+    outline: 2px solid var(--dark);
+  }
+}
+
+#component-root {
+  @include body-styling();
+}

@@ -1,0 +1,91 @@
+@use "_theme.scss";
+
+.cart-ng-revert-modification-progress-dialog-wrapper {
+
+  .cart-ng-revert-modification-dialog-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    .cart-ng-revert-modification-dialog {
+
+      @media (max-width: theme.$sm) {
+        margin: 0 20px;
+      }
+
+      .modal-content {
+        max-width: 537px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 537px;
+
+        @media (max-width: theme.$md) {
+          position: relative;
+          left:-18px;
+        }
+
+        @media (max-width: theme.$sm) {
+          position: relative;
+          width: calc(100vw - 40px);
+          margin-left: 20px;
+          margin-right: 20px;
+          left:0;
+        }
+
+        .cart-ng-revert-modification-process-close {
+          background: none;
+          border: none;
+          padding: 20px;
+          position: absolute;
+          right: 0;
+          cursor: pointer;
+          z-index: 1;
+        }
+
+        .dialog-content {
+          padding: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          @media (max-width: theme.$sm) {
+            padding: 48px 20px;
+          }
+
+          .cart-ng-revert-modification-success {
+            font-size: var(--text-size-h4);
+            color: var(--text-color-ultra-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .cart-ng-duplicate-success-icon {
+              margin-bottom: 30px;
+            }
+
+            .dialog-text {
+              line-height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              text-align: center;
+              margin-top: 20px;
+
+              > div {
+                text-align: center;
+              }
+
+              .success-text {
+                color: var(--color-success);
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

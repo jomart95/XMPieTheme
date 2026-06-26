@@ -1,0 +1,9 @@
+.price {
+  
+  &.highlight {
+    color: var(--color-highlight);
+    text-align: end;
+    width: max-content;
+    max-width: 160px;
+  }
+}

@@ -1,0 +1,10 @@
+@use "_theme.scss";
+
+.cart-summary-main-container {
+  width: 25vw;
+  position: relative;
+
+  @media (max-width: theme.$lg) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,22 @@
+@use '_theme.scss';
+
+.iframe{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border: none;
+  background-color: white;
+}
+
+.iframe-container{
+  height: 500px;
+}
+
+
+.cant-show-secured-legacy {
+  height: calc(100vh - var(--header-height-desktop) - var(--footer-height));
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

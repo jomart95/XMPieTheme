@@ -1,0 +1,736 @@
+{
+  "engineVersion": "1",
+  "uStoreVersion": "25.3.17677",
+  "name": "McFaddinBase",
+  "displayName": "McFaddin Base",
+  "customization": {
+    "widgets": {
+      "locations": [
+        {
+          "name": "header_above",
+          "displayName": "Header - above"
+        },
+        {
+          "name": "header_below",
+          "displayName": "Header - below"
+        },
+        {
+          "name": "user_menu_top",
+          "displayName": "User Menu - Top"
+        },
+        {
+          "name": "user_menu_bottom",
+          "displayName": "User Menu - Bottom"
+        },
+        {
+          "name": "footer",
+          "displayName": "Footer"
+        },
+        {
+          "name": "homepage_top",
+          "displayName": "Homepage - top"
+        },
+        {
+          "name": "homepage_bottom",
+          "displayName": "Homepage - bottom"
+        },
+        {
+          "name": "category_top",
+          "displayName": "Category - top"
+        },
+        {
+          "name": "category_next_to_item_name",
+          "displayName": "Category - next to item name"
+        },
+        {
+          "name": "category_bottom_of_item_box",
+          "displayName": "Category - bottom of item-box"
+        },
+        {
+          "name": "category_bottom",
+          "displayName": "Category - bottom"
+        },
+        {
+          "name": "ng_product_top",
+          "displayName": "NG Products - top"
+        },
+        {
+          "name": "ng_product_bottom",
+          "displayName": "NG Products - bottom"
+        },
+        {
+          "name": "ng_product_above_name",
+          "displayName": "NG Products: Above name"
+        },
+        {
+          "name": "ng_product_above_quantity",
+          "displayName": "NG Products: Above quantity"
+        },
+        {
+          "name": "ng_product_below_quantity",
+          "displayName": "NG Products: Below quantity"
+        },
+        {
+          "name": "ng_product_above_summary",
+          "displayName": "NG Products: Above Summary"
+        },
+        {
+          "name": "ng_product_below_summary",
+          "displayName": "NG Products: Bellow Summary"
+        },
+        {
+          "name": "ng_product_easy_upload_document_upload_button",
+          "displayName": "NG Products: Easy Upload Product - Document Upload Button"
+        },
+        {
+          "name": "ng_product_easy_upload_document_replace_button",
+          "displayName": "NG Products: Easy Upload Product Replace Document Button"
+        },
+        {
+          "name": "ng_product_easy_upload_document_below_doc_area",
+          "displayName": "NG Products: Easy Upload Product - Below Document Area",
+          "widgetTypes": "[1]"
+        },
+        {
+          "name": "ng_product_above_add_to_cart",
+          "displayName": "NG Products: Above add to cart"
+        },
+        {
+          "name": "ng_product_below_add_to_cart",
+          "displayName": "NG Products: Below add to cart"
+        },
+        {
+          "name": "cart_under_header",
+          "displayName": "Cart - under header"
+        },
+        {
+          "name": "cart_under_title",
+          "displayName": "Cart - under title"
+        },
+        {
+          "name": "cart_below_summary_title",
+          "displayName": "Cart - below summary title"
+        },
+        {
+          "name": "cart_above_checkout_button",
+          "displayName": "Cart - above checkout button"
+        },
+        {
+          "name": "cart_below_checkout_button",
+          "displayName": "Cart - below checkout button"
+        },
+        {
+          "name": "cart_above_wishlist_section",
+          "displayName": "Cart - above wish list"
+        }
+      ]
+    },
+    "variables": [
+      {
+        "cssVariableName": "--font-family",
+        "defaultValue": "Roboto",
+        "control": {
+          "type": "font-picker",
+          "section": "Typography",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Storefront font",
+              "localizationKey": "ThemeEditor_FontFamily_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-size-h2",
+        "defaultValue": "30px",
+        "control": {
+          "type": "number-picker",
+          "section": "Typography",
+          "options": {
+            "unit": "px",
+            "min": 20,
+            "max": 36
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Heading text base size",
+              "localizationKey": "ThemeEditor_HeadingTextBaseSize_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-size-label",
+        "defaultValue": "16px",
+        "control": {
+          "type": "number-picker",
+          "section": "Typography",
+          "options": {
+            "unit": "px",
+            "min": 12,
+            "max": 20
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Body text base size",
+              "localizationKey": "ThemeEditor_BodyTextBaseSize_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--color-highlight",
+        "defaultValue": "#3d8fd4",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.General",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Highlight color",
+              "localizationKey": "ThemeEditor_HighlightColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--color-line",
+        "defaultValue": "#d6d6d6",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.General",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Line Color",
+              "localizationKey": "ThemeEditor_Line_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-ultra-dark",
+        "defaultValue": "#000000",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Text",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Ultra dark text",
+              "localizationKey": "ThemeEditor_UltraDarkText_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-dark",
+        "defaultValue": "#484848",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Text",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Dark text",
+              "localizationKey": "ThemeEditor_DarkText_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-medium",
+        "defaultValue": "#767676",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Text",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Medium text",
+              "localizationKey": "ThemeEditor_MediumText_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-on-highlight-bg",
+        "defaultValue": "#ffffff",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Text",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Text on highlight background",
+              "localizationKey": "ThemeEditor_TextOnHighlight_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--button-primary-background-color",
+        "defaultValue": "#3d8fd4",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Button",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Button color",
+              "localizationKey": "ThemeEditor_PrimaryBackgroundColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--button-primary-text-color",
+        "defaultValue": "#ffffff",
+        "control": {
+          "type": "color-picker",
+          "section": "ColorAndStyle.Button",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Primary button text",
+              "localizationKey": "ThemeEditor_PrimaryButtonText_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--button-border-radius",
+        "defaultValue": "8px",
+        "control": {
+          "type": "number-picker",
+          "section": "ColorAndStyle.Button",
+          "options": {
+            "unit": "px",
+            "min": 0,
+            "max": 40
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Button corner radius",
+              "localizationKey": "ThemeEditor_ButtonCornerRadius_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--category-image-height",
+        "defaultValue": "180px",
+        "control": {
+          "type": "number-input",
+          "section": "ColorAndStyle.Image",
+          "options": {
+            "unit": "px",
+            "min": 50,
+            "max": 300
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Category image height",
+              "localizationKey": "ThemeEditor_CategoryImageHeight_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--image-box-height",
+        "defaultValue": "275px",
+        "control": {
+          "type": "number-input",
+          "section": "ColorAndStyle.Image",
+          "options": {
+            "unit": "px",
+            "min": 100,
+            "max": 400
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Product box height​",
+              "localizationKey": "ThemeEditor_ProductImageBoxHeight_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--form-input-border-radius",
+        "defaultValue": "5px",
+        "control": {
+          "type": "number-picker",
+          "section": "ColorAndStyle.FormField",
+          "options": {
+            "unit": "px",
+            "min": 0,
+            "max": 40
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Form field corner radius",
+              "localizationKey": "ThemeEditor_FormFieldCornerRadius_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--favicon-url",
+        "defaultValue": "",
+        "control": {
+          "type": "image-uploader",
+          "fileExtensions": "png",
+          "section": "HeaderAndFooter",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Logo",
+              "localizationKey": "ThemeEditor_FaviconImage_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--logo-image",
+        "defaultValue": "",
+        "control": {
+          "type": "image-uploader",
+          "section": "HeaderAndFooter.Header",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Logo",
+              "localizationKey": "ThemeEditor_LogoImage_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--header-height-desktop",
+        "defaultValue": "80px",
+        "control": {
+          "type": "number-picker",
+          "section": "HeaderAndFooter.Header",
+          "options": {
+            "unit": "px",
+            "min": 60,
+            "max": 250
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Desktop header height",
+              "localizationKey": "ThemeEditor_HeaderHeightDesktop_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--header-height-mobile",
+        "defaultValue": "50px",
+        "control": {
+          "type": "number-picker",
+          "section": "HeaderAndFooter.Header",
+          "options": {
+            "unit": "px",
+            "min": 40,
+            "max": 160
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Mobile header height",
+              "localizationKey": "ThemeEditor_HeaderHeightMobile_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--header-background-color",
+        "defaultValue": "#1e3a5f",
+        "control": {
+          "type": "color-picker",
+          "section": "HeaderAndFooter.Header",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Header background color",
+              "localizationKey": "ThemeEditor_HeaderBGColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-header",
+        "defaultValue": "#ffffff",
+        "control": {
+          "type": "color-picker",
+          "section": "HeaderAndFooter.Header",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Header text color",
+              "localizationKey": "ThemeEditor_HeaderTextColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--footer-background-color",
+        "defaultValue": "#0f2547",
+        "control": {
+          "type": "color-picker",
+          "section": "HeaderAndFooter.Footer",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Footer background color",
+              "localizationKey": "ThemeEditor_FooterBGColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--footer-text-color",
+        "defaultValue": "#ffffff",
+        "control": {
+          "type": "color-picker",
+          "section": "HeaderAndFooter.Footer",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Footer text color",
+              "localizationKey": "ThemeEditor_FooterTextColor_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--homepage-carousel-slide-1-image",
+        "defaultValue": "",
+        "control": {
+          "type": "image-uploader",
+          "section": "Banner",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Image",
+              "localizationKey": "ThemeEditor_HomePageCarouselSlide1_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--carousel-height-desktop",
+        "defaultValue": "600px",
+        "control": {
+          "type": "number-picker",
+          "section": "Banner",
+          "options": {
+            "unit": "px",
+            "min": 200,
+            "max": 1000
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Base image height",
+              "localizationKey": "ThemeEditor_BaseImageHeight_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-size-h1",
+        "defaultValue": "60px",
+        "control": {
+          "type": "number-picker",
+          "section": "Banner",
+          "options": {
+            "unit": "px",
+            "min": 24,
+            "max": 100
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Base text size",
+              "localizationKey": "ThemeEditor_BaseTextSize_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--text-color-carousel",
+        "defaultValue": "#000000",
+        "control": {
+          "type": "color-picker",
+          "section": "Banner",
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Text color",
+              "localizationKey": "ThemeEditor_TextColorCarousel_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--homepage-carousel-slide-1-main-text",
+        "defaultValue": "",
+        "control": {
+          "type": "text-input",
+          "section": "Banner",
+          "options": {
+            "rows": 1
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Title",
+              "localizationKey": "ThemeEditor_HomePageCarouselSlide1Title_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--homepage-carousel-slide-1-sub-text",
+        "defaultValue": "",
+        "control": {
+          "type": "text-input",
+          "section": "Banner",
+          "options": {
+            "rows": 2
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Subtitle",
+              "localizationKey": "ThemeEditor_HomePageCarouselSlide1Subtitle_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--homepage-carousel-slide-1-button-text",
+        "defaultValue": "",
+        "control": {
+          "type": "text-input",
+          "section": "Banner",
+          "options": {
+            "rows": 1
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Button text",
+              "localizationKey": "ThemeEditor_ShopButtonText_Title"
+            }
+          ]
+        }
+      },
+      {
+        "cssVariableName": "--homepage-carousel-slide-1-button-url",
+        "defaultValue": "",
+        "control": {
+          "type": "text-input",
+          "section": "Banner",
+          "options": {
+            "rows": 2
+          },
+          "displayTexts": [
+            {
+              "key": "Title",
+              "value": "Button URL",
+              "localizationKey": "ThemeEditor_ShopButtonUrl_Title"
+            },
+            {
+              "key": "Hint",
+              "value": "Type a relative URL",
+              "localizationKey": "ThemeEditor_ShopButtonUrl_Hint"
+            },
+            {
+              "key": "Description",
+              "value": "e.g. /category/10/ or /product/102/",
+              "localizationKey": "ThemeEditor_ShopButtonUrl_Description"
+            }
+          ]
+        }
+      }
+    ],
+    "sections": [
+      {
+        "name": "Typography",
+        "displayName": "Typography",
+        "localizationKey": "ThemeEditor_TypographySectionName"
+      },
+      {
+        "name": "ColorAndStyle",
+        "displayName": "Color And Style",
+        "localizationKey": "ThemeEditor_ColorAndStyleSectionName",
+        "subSections": [
+          {
+            "name": "General",
+            "displayName": "General",
+            "localizationKey": "ThemeEditor_GeneralSectionName"
+          },
+          {
+            "name": "Text",
+            "displayName": "Text",
+            "localizationKey": "ThemeEditor_ColorAndStyleTextSectionName"
+          },
+          {
+            "name": "Button",
+            "displayName": "Button",
+            "localizationKey": "ThemeEditor_ButtonSectionName"
+          },
+          {
+            "name": "Image",
+            "displayName": "Image",
+            "localizationKey": "ThemeEditor_ColorAndStyleImageSectionName"
+          },
+          {
+            "name": "FormField",
+            "displayName": "Form Field",
+            "localizationKey": "ThemeEditor_ColorAndStyleFormFieldSectionName"
+          }
+        ]
+      },
+      {
+        "name": "HeaderAndFooter",
+        "displayName": "Header And Footer",
+        "localizationKey": "ThemeEditor_HeaderAndFooterSectionName",
+        "subSections": [
+          {
+            "name": "Header",
+            "displayName": "Header",
+            "localizationKey": "ThemeEditor_HeaderSectionName"
+          },
+          {
+            "name": "Footer",
+            "displayName": "Footer",
+            "localizationKey": "ThemeEditor_FooterSectionName"
+          }
+        ]
+      },
+      {
+        "name": "Banner",
+        "displayName": "Homepage Banner",
+        "localizationKey": "ThemeEditor_BannerSectionName"
+      }
+    ]
+  },
+  "features": {
+    "newTimezoneModel": true,
+    "newHTMLGenericChangeValue": true,
+    "newStaticProduct": true,
+    "fileUploadFix": true
+  }
+}

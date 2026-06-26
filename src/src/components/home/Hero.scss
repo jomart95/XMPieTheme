@@ -1,0 +1,314 @@
+@use '_theme.scss';
+
+.mcf-hero {
+  /* Local tokens map to the existing skin tokens (with base fallbacks), so the
+     per-client override recolours the hero without touching this file. */
+  --hero-ink:     var(--surface-dark-color, #0f2547);
+  --hero-accent:  var(--button-primary-background-color, #3d8fd4);
+  --hero-gold:    var(--accent-secondary, #c79a3b);
+  --hero-panel:   var(--surface-dark-color, #0f2547);
+  --hero-surface: var(--page-background-color, #ffffff);
+  --hero-muted:   #5d6b7a;
+  --hero-rule:    #d9dee5;
+  --hero-radius:  var(--button-border-radius, 8px);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+  background: var(--hero-surface);
+}
+
+/* ---------- LEFT: content ---------- */
+.mcf-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 56px 72px 48px;
+  background: var(--hero-surface);
+  border-right: 1px solid var(--hero-rule);
+}
+
+.mcf-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hero-accent);
+
+  &::before {
+    content: '';
+    flex-shrink: 0;
+    width: 20px;
+    height: 2px;
+    background: var(--hero-accent);
+  }
+}
+
+.mcf-hero__title {
+  margin-bottom: 24px;
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: clamp(44px, 5.5vw, 72px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--hero-ink);
+}
+.mcf-hero__accent      { color: var(--hero-accent); }
+.mcf-hero__accent-gold { color: var(--hero-gold); }
+
+.mcf-hero__sub {
+  max-width: 400px;
+  margin-bottom: 40px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--hero-muted);
+}
+
+.mcf-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 52px;
+}
+
+.mcf-hero__btn {
+  padding: 15px 32px;
+  border: 2px solid transparent;
+  border-radius: var(--hero-radius);
+  font-family: var(--font-family, 'Roboto', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &--primary {
+    background: var(--hero-accent);
+    color: #fff;
+
+    &:hover { filter: brightness(0.92); }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: var(--hero-ink);
+    border-color: var(--hero-ink);
+
+    &:hover {
+      border-color: var(--hero-accent);
+      color: var(--hero-accent);
+    }
+  }
+}
+
+.mcf-hero__stats {
+  display: flex;
+  padding-top: 32px;
+  border-top: 1px solid var(--hero-rule);
+}
+
+.mcf-hero__stat {
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid var(--hero-rule);
+
+  &:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+  }
+}
+
+.mcf-hero__stat-num {
+  margin-bottom: 4px;
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--hero-ink);
+
+  em {
+    margin-left: 2px;
+    font-style: normal;
+    color: var(--hero-accent);
+  }
+}
+
+.mcf-hero__stat-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hero-muted);
+}
+
+/* ---------- RIGHT: panel + cards ---------- */
+.mcf-hero__panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 56px 48px;
+  background: var(--hero-panel);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61, 143, 212, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199, 154, 59, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.mcf-hero__cards {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.mcf-hero__card {
+  display: block;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+
+  &:hover {
+    border-color: var(--hero-accent);
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  &--wide { grid-column: span 2; }
+}
+
+.mcf-hero__card-label {
+  margin-bottom: 8px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hero-gold);
+}
+
+.mcf-hero__card-title {
+  margin-bottom: 6px;
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.mcf-hero__card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mcf-hero__card-bar {
+  width: 22px;
+  height: 2px;
+  margin-top: 12px;
+  background: var(--hero-accent);
+}
+
+.mcf-hero__panel-cta {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 390px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: var(--hero-radius);
+  background: var(--hero-accent);
+  color: #fff;
+  font-family: var(--font-family, 'Roboto', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+
+  &:hover { filter: brightness(0.92); }
+}
+
+/* ---------- MOBILE: stack below lg ---------- */
+@media (max-width: theme.$lg) {
+  .mcf-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .mcf-hero__content {
+    padding: 48px 24px;
+    border-right: none;
+  }
+
+  .mcf-hero__title {
+    font-size: clamp(36px, 9vw, 52px);
+  }
+
+  .mcf-hero__sub {
+    max-width: none;
+  }
+
+  .mcf-hero__actions {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+
+  .mcf-hero__btn {
+    width: 100%;
+  }
+
+  .mcf-hero__stat {
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+
+  .mcf-hero__stat-num {
+    font-size: 26px;
+  }
+
+  .mcf-hero__panel {
+    min-height: 0;
+    padding: 40px 24px;
+  }
+}

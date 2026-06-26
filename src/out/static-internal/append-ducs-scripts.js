@@ -1,0 +1,1 @@
+xmpie_uStore_DUCs&&xmpie_uStore_DUCs.forEach((r=>{document.writeln(`<script src="${r.baseUrl}/main.min.js?rand=${r.buildNumber||Math.random()}" type="application/javascript"><\/script>`),document.writeln(`<link href="${r.baseUrl}/main.css?rand=${r.buildNumber||Math.random()}" rel="stylesheet"/>`)}));

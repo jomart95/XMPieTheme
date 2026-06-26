@@ -1,0 +1,52 @@
+@use "_theme.scss";
+
+.cart-summary-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: var(--text-size-label);
+  color: var(--text-color-ultra-dark);
+
+  @media (max-width: theme.$lg) {
+    font-size: var(--text-size-regular);
+    color: var(--text-color-medium);
+  }
+
+  @media (max-width: theme.$md) {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+  .block-value {
+    white-space: nowrap;
+    .price {
+      font-size: var(--text-size-label);
+      color: var(--text-color-ultra-dark);
+    }
+    .price-currency {
+      padding-left: 5px ;
+    }
+  }
+
+  .cart-summary-no-price {
+    font-size: var(--text-size-h4);
+    color: var(--text-color-ultra-dark);
+    text-align: center;
+    margin: 50px 0 30px 0;
+  }
+}
+
+.block-total {
+  margin-bottom: 30px;
+
+  @media (max-width: theme.$lg) {
+    font-size: var(--text-size-label);
+    color: var(--text-color-ultra-dark);
+  }
+
+  @media (max-width: theme.$md) {
+    margin-bottom: 20px;
+  }
+
+}

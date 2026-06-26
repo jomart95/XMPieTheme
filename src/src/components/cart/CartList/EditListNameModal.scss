@@ -1,0 +1,86 @@
+@use "_theme.scss";
+
+.edit-list-name-dialog.fade.show {
+
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: calc(50% - 137px);
+
+    .modal-content {
+      width: 100%;
+      max-width: 536px;
+
+      .close-modal {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--color-line);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @media (max-width: theme.$sm) {
+          padding: 13px 20px;
+          align-items: center;
+        }
+
+        .title {
+          font-size: var(--text-size-label);
+          color: var(--text-color-ultra-dark);
+          margin: 0;
+
+          @media (max-width: theme.$sm) {
+            font-size: var(--text-size-h4);
+          }
+        }
+
+        .close-button {
+          border: none;
+          background: none;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .modal-body {
+        padding: 30px 20px;
+
+        .error {
+          color: var(--color-error);
+          margin-top: 10px;
+          position: absolute;
+        }
+
+        .label {
+          color: var(--text-color-ultra-dark);
+          font-size: var(--text-size-label);
+          line-height: var(--text-size-label);
+          margin: 0 0 10px 0;
+        }
+
+        input[type='text'] {
+          color: var(--text-color-dark);
+          border-color: var(--color-line);
+        }
+
+      }
+
+
+      .action-buttons {
+        display: flex;
+        flex-direction: row;
+        margin-top: 50px;
+
+        .button {
+          width: calc((100% - 15px) / 2);
+          height: 40px;
+          padding: 3px 10px;
+        }
+
+        .button-primary {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

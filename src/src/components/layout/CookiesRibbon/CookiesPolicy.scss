@@ -1,0 +1,140 @@
+@use "_theme.scss";
+
+.cookies-policy-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50vh;
+
+  @media (max-width: theme.$md) {
+    height: 100vh;
+  }
+
+  .cookies-policy-title {
+    font-size: var(--text-size-h4);
+    padding: 30px 60px 20px;
+
+    @media (max-width: theme.$md) {
+      padding: 15px 20px;
+      width: 100%;
+      align-self: flex-start;
+      border-bottom: 1px solid var(--color-line);
+    }
+  }
+
+  .cookies-policy-description {
+    overflow: auto;
+    width: 100%;
+    font-size: var(--text-size-label);
+    padding: 0 60px 30px;
+
+    @media (max-width: theme.$md) {
+      padding: 20px 20px 30px;
+    }
+
+    &::-webkit-scrollbar, {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track,
+    .cookies-table::-webkit-scrollbar-track {
+      border-radius: var(--button-border-radius);
+      background: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    .cookies-table::-webkit-scrollbar-thumb {
+      border-radius: var(--button-border-radius);
+      background: var(--color-line);
+    }
+  }
+
+  .cookies-explanation-title,
+  .cookies-necessary-title {
+  }
+
+  .cookies-explanation,
+  .cookies-necessary,
+  .cookies-table {
+    &-title {
+      font-size: var(--text-size-label);
+      padding-bottom: 10px;
+    }
+
+    &-description {
+      font-size: var(--text-size-regular);
+      padding-bottom: 30px;
+    }
+  }
+
+  .cookies-table {
+    border-radius: var(--form-input-border-radius);
+    border: 1px solid var(--color-line);
+    overflow-x: auto;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    table {
+      min-width: 100%;
+
+      .table-head {
+        border-bottom: 1px solid var(--color-line);
+        font-size: var(--text-size-regular);
+      }
+
+      tbody {
+        tr:nth-child(odd) {
+          background-color: var(--color-fill);
+        }
+      }
+
+      .cookie-row {
+        font-size: var(--text-size-fineprint);
+
+        td {
+          div {
+            width: 100%;
+            padding: 12px 15px;
+            height: 42px;
+            white-space: nowrap;
+
+            @media (max-width: theme.$md) {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+          }
+
+          &:last-of-type {
+            min-width: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.cross-close-button-container.policy {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+
+  @media (max-width: theme.$md) {
+    .icon {
+      width: 20px !important;
+      height: 20px !important;
+      background-size: 20px 20px !important;
+
+      svg {
+        width: inherit;
+        height: inherit;
+      }
+    }
+  }
+}

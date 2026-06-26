@@ -1,0 +1,132 @@
+.drop-down {
+  width: 100%;
+
+  .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--color-line);
+    color: var(--text-color-dark);
+    font-size: var(--text-size-regular);
+
+    &:focus {
+      outline: var(--text-color-ultra-dark) auto 2px;
+    }
+
+    &:hover, &:active {
+      background: var(--white);
+      color: var(--text-color-dark);
+    }
+
+    &.btn:first-child {
+      min-height: 20px;
+
+      &:active {
+        background: var(--white);
+        color: var(--text-color-dark);
+      }
+
+      > span {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    &:disabled {
+      background: var(--bs-secondary-bg);
+      color: var(--text-color-medium);
+      border-color: var(--bs-border-color);
+    }
+  }
+
+  .dropdown-menu {
+    width: auto;
+    font-size: var(--text-size-regular);
+    color: var(--text-color-dark);
+    border: 1px solid var(--color-line);
+
+    .drop-down-item-container {
+      display: flex;
+      align-items: center;
+
+      > span {
+        color:var(--text-color-dropdown-menu);
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .icon.icon-holder {
+        margin-right: 10px;
+        svg {
+          path {
+            fill: var(--text-color-dropdown-menu);
+          }
+        }
+      }
+
+      .dropdown-item {
+        padding: 11px 15px;
+        margin: 0;
+
+
+        &.active {
+          background: var(--color-fill);
+          color: var(--text-color-dropdown-menu);
+        }
+
+        &.disabled {
+          .icon {
+            svg {
+              path {
+                stroke: var(--text-color-medium);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .drop-down-search-input-item {
+      position: relative;
+      display: flex;
+      margin: 0 15px;
+      .drop-down-search-input {
+        color: var(--text-color-medium);
+        font-size: var(--text-size-label);
+        border-color: var(--color-line);
+
+        &::placeholder {
+          color: var(--text-color-medium);
+        }
+      }
+
+      .drop-down-search-icon-container {
+        position: absolute;
+        right: 16px;
+        display: flex;
+        height: 100%;
+        align-items: center;
+
+        .drop-down-search-icon {
+
+          svg {
+            cursor: pointer;
+            background: var(--white);
+
+            g {
+              path {
+                stroke: var(--text-color-medium);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

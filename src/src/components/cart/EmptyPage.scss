@@ -1,0 +1,81 @@
+@use "_theme.scss";
+
+.no-results {
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height-desktop));
+
+  @media (max-width: theme.$lg) {
+    margin-top: 30px;
+  }
+
+  .top-section {
+    margin: auto;
+
+    @media (max-width: theme.$md) {
+      padding: 0 20px;
+    }
+
+    .no-results-title {
+      font-size: var(--text-size-h2);
+      color: var(--color-highlight);
+      margin-bottom: 10px;
+    }
+
+    .shopping-cart-text {
+      font-size: var(--text-size-h2);
+      margin-top: 60px;
+    }
+
+    .no-results-subtitle {
+      font-size: var(--text-size-label);
+      color: var(--text-color-dark);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.cart-ng-empty-cart-button {
+  margin: 0 auto 0 auto;
+  height: 45px;
+  max-width: 320px;
+  font-size: var(--text-size-label);
+  background-color: var(--button-secondary-background-color);
+  border: 1px solid var(--button-secondary-border-color);
+  border-radius: var(--button-border-radius);
+  color: var(--button-secondary-text-color);
+  cursor: pointer;
+
+  & span {
+    line-height: 45px;
+  }
+}
+
+.bottom-section {
+  margin-top: 220px;
+
+  @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+    margin-top: 280px;
+  }
+
+  .divider {
+    height: 1px;
+    margin: 0 auto;
+    background: var(--color-line);
+  }
+
+  .bottom-section-title {
+    font-size: calc(var(--text-size-h4) * 1.2);
+
+    @media (min-width: theme.$xs) and (max-width: theme.$sm) {
+      margin: 25px auto;
+    }
+  }
+
+  .categories-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38" height="334" viewBox="0 0 38 334">
+    <defs>
+        <filter id="Ellipse_28" x="-8" y="-8" width="54" height="54" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Ellipse_29" x="-8" y="288" width="54" height="54" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="4" result="blur-2"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur-2"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient" x1="1" y1="0.978" x2="0" y2="0.978" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#53565a"/>
+            <stop offset="0.251" stop-color="#fff"/>
+            <stop offset="0.488" stop-color="#adafb1"/>
+            <stop offset="0.725" stop-color="#fff"/>
+            <stop offset="1" stop-color="#53565a"/>
+        </linearGradient>
+        <filter id="Rectangle_114" x="-1" y="-1" width="40" height="141" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="3" result="blur-3"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur-3"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Rectangle_115" x="-1" y="194" width="40" height="141" filterUnits="userSpaceOnUse">
+            <feOffset input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="3" result="blur-4"/>
+            <feFlood flood-opacity="0.502"/>
+            <feComposite operator="in" in2="blur-4"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <clipPath id="clip-last_page_1">
+            <rect width="38" height="334"/>
+        </clipPath>
+    </defs>
+    <g id="last_page_1" data-name="last page – 1" clip-path="url(#clip-last_page_1)">
+        <g id="Group_473" data-name="Group 473" transform="translate(-9749 -1032)">
+            <g id="Group_471" data-name="Group 471" transform="translate(9060 799)">
+                <g id="Group_462" data-name="Group 462" transform="translate(638 220)">
+                    <g transform="matrix(1, 0, 0, 1, 51, 13)" filter="url(#Ellipse_28)">
+                        <g id="Ellipse_28-2" data-name="Ellipse 28" transform="translate(8 8)" stroke="#6f6f6f" stroke-width="4">
+                            <circle cx="11" cy="11" r="11" stroke="none"/>
+                            <circle cx="11" cy="11" r="13" fill="none"/>
+                        </g>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, 51, 13)" filter="url(#Ellipse_29)">
+                        <g id="Ellipse_29-2" data-name="Ellipse 29" transform="translate(8 304)" stroke="#6f6f6f" stroke-width="4">
+                            <circle cx="11" cy="11" r="11" stroke="none"/>
+                            <circle cx="11" cy="11" r="13" fill="none"/>
+                        </g>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, 51, 13)" filter="url(#Rectangle_114)">
+                        <g id="Rectangle_114-2" data-name="Rectangle 114" transform="translate(8 8)" stroke="#53565a" stroke-width="1" fill="url(#linear-gradient)">
+                            <rect width="22" height="123" rx="10" stroke="none"/>
+                            <rect x="0.5" y="0.5" width="21" height="122" rx="9.5" fill="none"/>
+                        </g>
+                    </g>
+                    <g transform="matrix(1, 0, 0, 1, 51, 13)" filter="url(#Rectangle_115)">
+                        <g id="Rectangle_115-2" data-name="Rectangle 115" transform="translate(8 203)" stroke="#53565a" stroke-width="1" fill="url(#linear-gradient)">
+                            <rect width="22" height="123" rx="10" stroke="none"/>
+                            <rect x="0.5" y="0.5" width="21" height="122" rx="9.5" fill="none"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,43 @@
+@use "_theme.scss";
+
+/* MCF base — dark rounded category card.
+   NOTE: written from CategoryItem.js markup + the design; the ORIGINAL CategoryItem.scss
+   was not reviewed. If your current file has responsive image-height breakpoints (like
+   ProductItem does), merge those in rather than replacing wholesale. */
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-dark-color);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+  }
+
+  .image-wrapper {
+    background: var(--image-box-background-color);
+    height: var(--category-image-height);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .category-name {
+    padding: 14px 16px;
+    font-family: var(--font-family-condensed, var(--font-family));
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: var(--text-size-h4);
+    line-height: 1.15;
+    color: var(--text-color-on-highlight-bg);
+  }
+}

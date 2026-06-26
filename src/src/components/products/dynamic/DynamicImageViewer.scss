@@ -1,0 +1,19 @@
+@use "_theme.scss";
+
+.dynamic-product-approval.preview-image {
+  @media (max-width: theme.$lg) {
+    margin-bottom: 10px;
+  }
+
+  .carousel {
+    height: 100%;
+    width: 100%;
+
+    .image-loader.image.opacity-1 {
+      width: auto;
+      img {
+        border: var(--image-border-width) solid var(--image-border-color);
+      }
+    }
+  }
+}

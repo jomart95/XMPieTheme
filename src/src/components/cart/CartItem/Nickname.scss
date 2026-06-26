@@ -1,0 +1,96 @@
+@use '_theme.scss';
+
+.nickname-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  flex-basis: 100%;
+
+  .nickname-input {
+    display: inline-block;
+    border: 1px solid var(--color-line);
+    height: 30px;
+    border-radius: var(--form-input-border-radius);
+    width: 320px;
+    color: var(--text-color-dark);
+    font-size: var(--text-size-regular);
+    padding: 0 10px;
+    flex: 1;
+    margin-top: 4px;
+
+    &:focus {
+      outline: none;
+      border: 1px solid var(--color-line);
+    }
+
+    &::placeholder {
+      font-size: var(--text-size-regular);
+      color: var(--text-color-medium)
+    }
+  }
+
+  .nickname {
+    font-size: var(--text-size-regular);
+    color: var(--text-color-medium);
+    margin: 8px 0 0 0;
+  }
+  .nickname-delete-desktop {
+    min-height: 16px;
+    margin-top: 8px;
+  }
+}
+
+.nickname-edit {
+
+  &-desktop {
+    margin-left: 8px;
+    cursor: pointer;
+    display: none;
+
+    .icon {
+      position: relative;
+      top: 5px;
+    }
+
+    @media (min-width: theme.$lg + 1) {
+      display: block;
+    }
+  }
+
+  &-mobile {
+    margin-left: 8px;
+    cursor: pointer;
+    display: none;
+    .icon {
+      position: relative;
+      top: 3px;
+    }
+    @media (max-width: theme.$lg) {
+      display: block;
+    }
+  }
+
+}
+
+.nickname-delete {
+
+  &-desktop {
+    margin-left: 10px;
+    cursor: pointer;
+
+    @media (min-width: theme.$xs) {
+      display: block;
+    }
+  }
+
+  &-mobile {
+    margin-left: 10px;
+    cursor: pointer;
+
+    @media (max-width: theme.$xs) {
+      display: block;
+    }
+  }
+
+}

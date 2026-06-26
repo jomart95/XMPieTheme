@@ -1,0 +1,31 @@
+var _path;
+const _excluded = ["title", "titleId"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+import * as React from "react";
+import { forwardRef } from "react";
+const SvgAltTextDone = (_ref, ref) => {
+  let {
+      title,
+      titleId
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 12,
+    height: 13,
+    viewBox: "0 0 12 13",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: ref,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M6 0.5C5.21207 0.5 4.43185 0.655195 3.7039 0.956723C2.97595 1.25825 2.31451 1.70021 1.75736 2.25736C1.20021 2.81451 0.758251 3.47595 0.456723 4.2039C0.155195 4.93185 0 5.71207 0 6.5C0 7.28793 0.155195 8.06815 0.456723 8.7961C0.758251 9.52405 1.20021 10.1855 1.75736 10.7426C2.31451 11.2998 2.97595 11.7417 3.7039 12.0433C4.43185 12.3448 5.21207 12.5 6 12.5C7.5913 12.5 9.11742 11.8679 10.2426 10.7426C11.3679 9.61742 12 8.0913 12 6.5C12 4.9087 11.3679 3.38258 10.2426 2.25736C9.11742 1.13214 7.5913 0.5 6 0.5ZM5.06 8.9L2.9464 6.7856C2.85273 6.69171 2.80018 6.56446 2.80033 6.43183C2.80048 6.29921 2.85331 6.17207 2.9472 6.0784C3.04109 5.98473 3.16834 5.93218 3.30097 5.93233C3.43359 5.93248 3.56073 5.98531 3.6544 6.0792L5.3112 7.7368L8.3464 4.7008C8.44109 4.6109 8.56715 4.56153 8.69771 4.56322C8.82827 4.56492 8.95301 4.61754 9.04534 4.70986C9.13766 4.80219 9.19028 4.92693 9.19198 5.05749C9.19367 5.18805 9.1443 5.31411 9.0544 5.4088L5.5624 8.9H5.06Z",
+    fill: "#FBFBFE"
+  })));
+};
+const ForwardRef = /*#__PURE__*/forwardRef(SvgAltTextDone);
+export { ForwardRef as ReactComponent };
+export default __webpack_public_path__ + "static/media/altText_done.bb72d81b39be40898db21e81272dbf39.svg";

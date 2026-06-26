@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 280 273">
+  <defs>
+    <filter id="Ellipse_28" x="211.647" y="-1.657" width="66.426" height="66.426" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_29" x="2.343" y="207.647" width="66.426" height="66.426" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur-2"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="1" y1="0.978" x2="0" y2="0.978" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#53565a"/>
+      <stop offset="0.251" stop-color="#fff"/>
+      <stop offset="0.488" stop-color="#adafb1"/>
+      <stop offset="0.725" stop-color="#fff"/>
+      <stop offset="1" stop-color="#53565a"/>
+    </linearGradient>
+    <filter id="Rectangle_109" x="146.765" y="9.121" width="120.531" height="120.531" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_110" x="13.122" y="142.764" width="120.531" height="120.531" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-staple_pin_back">
+      <rect width="280" height="273"/>
+    </clipPath>
+  </defs>
+  <g id="staple_pin_back" data-name="staple pin back" clip-path="url(#clip-staple_pin_back)" transform="rotate(4">
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_28)">
+      <g id="Ellipse_28-2" data-name="Ellipse 28" transform="translate(244.86 16) rotate(45)" stroke="#6f6f6f" stroke-width="4">
+        <circle cx="11" cy="11" r="11" stroke="none"/>
+        <circle cx="11" cy="11" r="13" fill="none"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_29)">
+      <g id="Ellipse_29-2" data-name="Ellipse 29" transform="translate(35.56 225.3) rotate(45)" stroke="#6f6f6f" stroke-width="4">
+        <circle cx="11" cy="11" r="11" stroke="none"/>
+        <circle cx="11" cy="11" r="13" fill="none"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_109)">
+      <g id="Rectangle_109-2" data-name="Rectangle 109" transform="translate(242.74 18.12) rotate(45)" stroke="#53565a" stroke-width="1" fill="url(#linear-gradient)">
+        <rect width="22" height="123" rx="10" stroke="none"/>
+        <rect x="0.5" y="0.5" width="21" height="122" rx="9.5" fill="none"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_110)">
+      <g id="Rectangle_110-2" data-name="Rectangle 110" transform="translate(109.1 151.76) rotate(45)" stroke="#53565a" stroke-width="1" fill="url(#linear-gradient)">
+        <rect width="22" height="123" rx="10" stroke="none"/>
+        <rect x="0.5" y="0.5" width="21" height="122" rx="9.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+@use "_theme";
+
+.cart-summary-export-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-size-label);
+  color: var(--color-error);
+  padding-top:20px;
+  margin-bottom:20px;
+
+  .icon-holder {
+    margin-right: 10px;
+    svg {
+      path {
+        fill: var(--color-error);
+      }
+    }
+  }
+
+}

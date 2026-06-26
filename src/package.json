@@ -1,0 +1,129 @@
+{
+  "name": "McFaddinBase",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.5",
+    "@ustore/core": "file:./npm_packages/ustore-core-1.0.0.tgz",
+    "@ustore/uedit": "file:./npm_packages/ustore-uedit-2.0.382.tgz",
+    "ajv": "^8.12.0",
+    "bootstrap": "^5.3.0",
+    "css-selector-generator": "^3.6.8",
+    "deepcopy": "^2.1.0",
+    "glob": "^9.2.1",
+    "hashids": "^2.2.10",
+    "immer": "^10.0.2",
+    "isomorphic-fetch": "^3.0.0",
+    "logdown": "^3.3.1",
+    "memoize-one": "^6.0.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "mobx": "^6.10.0",
+    "mobx-react-lite": "^4.0.3",
+    "moment": "^2.29.4",
+    "path-to-regexp": "^6.2.1",
+    "pdfjs-dist": "^4.2.67",
+    "react": "^18.2.0",
+    "react-aria-components": "^1.1.1",
+    "react-color": "^2.19.3",
+    "react-custom-scrollbars-2": "^4.5.0",
+    "react-dom": "^18.2.0",
+    "react-infinite-scroller": "^1.2.6",
+    "react-lazy-load": "^4.0.1",
+    "react-lines-ellipsis": "^0.15.1",
+    "react-loading-skeleton": "^3.3.1",
+    "react-paginate": "^8.2.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.3.0",
+    "react-router-hash-link": "^2.4.3",
+    "react-scripts": "^5.1.0-next.14",
+    "react-svg": "^15.1.3",
+    "react-swipeable": "^7.0.1",
+    "react-transition-group": "^4.4.5",
+    "react-zoom-pan-pinch": "^3.4.2",
+    "reactstrap-wc": "file:./npm_packages/reactstrap-wc-19.2.3.tgz",
+    "resize-observer-polyfill": "^1.5.1",
+    "roddeh-i18n": "^1.2.1",
+    "sanitize-html": "^2.13.0",
+    "throttle-debounce": "^5.0.0",
+    "uuid": "^9.0.0",
+    "web-vitals": "^2.1.4"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "scripts": {
+    "build": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH='./out' node ./rewire/build.js",
+    "publish": "node ./src/ustore-internal/scripts/publish-user.js",
+    "republish": "node ./src/ustore-internal/scripts/republish.js",
+    "compile_shared_scss": "node ./src/ustore-internal/scripts/compileSharedScssOnPublish.js",
+    "dev:wc": "cross-env GENERATE_SOURCEMAP=false node ./rewire/start.js wc=1",
+    "build:wc": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH='./out_wc' node ./rewire/build.js wc=1",
+    "inject_css_vars:wc": "node ./src/ustore-internal/scripts/publish/inject-wc-css-vars.js",
+    "publish:wc": "npm-run-all build:wc inject_css_vars:wc",
+    "css:wc:dev": "webpack serve --config  src/ustore-internal/scripts/webpack.config.scss.js",
+    "css:wc:build": "webpack --config  src/ustore-internal/scripts/webpack.config.scss.js",
+    "start:wc": "npm-run-all -l -p css:wc:dev \"dev:wc {@}\" --",
+    "start": "cross-env GENERATE_SOURCEMAP=false DEPLOY_ENV=dev node ./rewire/start.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "archiver": "^5.3.1",
+    "child_process": "^1.0.2",
+    "cli-color": "^2.0.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "cross-spawn": "^7.0.3",
+    "dotenv": "^16.0.2",
+    "eslint": "^8.30.0",
+    "eslint-plugin-react": "^7.31.11",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.3",
+    "fs-extra": "^11.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^2.6.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.49",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.53.0",
+    "sass-loader": "^16.0.4",
+    "url-loader": "^4.1.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-hot-middleware": "^2.25.2"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5",
+    "react-scripts": {
+      "@svgr/webpack": "8.1.0",
+      "@babel/traverse": "7.23.2",
+      "resolve-url-loader": "5.0.0"
+    },
+    "follow-redirects": "1.15.5",
+    "ip": "2.0.1"
+  }
+}

@@ -1,0 +1,174 @@
+@use "_theme.scss";
+
+.product-quantity {
+  display: inline;
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .txt-quantity-wrapper,
+  .ro-quantity-wrapper,
+  .dd-quantity-wrapper {
+    display: inline;
+    position: relative;
+  }
+
+  .quantity-control {
+    border-radius: var(--form-input-border-radius);
+    font-size: var(--text-size-regular);
+    color: var(--text-color-dark);
+  }
+
+  .quantity-dropdown {
+    display: inline-block;
+    width: 117px;
+    padding: 0 10px;
+    height: 30px;
+    border: 1px solid var(--color-line);
+    outline: none;
+    position: relative;
+    background-color: white;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .quantity-focused {
+    outline: 2px solid black;
+  }
+
+  .quantity-input {
+    height: 30px;
+    width: 117px;
+    border: 1px solid var(--color-line);
+    padding: 0 20px;
+    outline: none;
+
+    @media (max-width: theme.$lg) {
+      // in order to prevent iOS devices from zooming when focusing the input, use 16px;
+      font-size: 16px;
+    }
+
+
+  }
+
+  .quantity-label {
+    margin-left: 6px;
+  }
+
+  .dd-quantity-wrapper::after {
+    position: absolute;
+    content: "";
+    top: 5px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 5px solid rgba(0, 0, 0, 0);
+    border-top-color: var(--text-color-medium);
+    pointer-events: none;
+  }
+
+  .txt-quantity-wrapper-show-indicators {
+    display: flex;
+    align-items: center;
+
+    .quantity-input {
+      width: 50px;
+      height: 26px;
+      border-style: hidden;
+      padding: 0 5px;
+      margin: 0 5px;
+      text-align: center;
+      font-size: var(--text-size-label);
+      color: var(--text-color-dark);
+
+      &:hover {
+        border: 1px solid var(--color-line);
+      }
+    }
+
+    .indicator {
+      cursor: pointer;
+
+      &.plus {
+        path {
+          fill: var(--button-primary-text-color);
+        }
+        path:first-of-type {
+          fill: var(--button-primary-background-color);
+        }
+      }
+
+      &.minus {
+        path {
+          fill: var(--button-secondary-text-color);
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+        path {
+          fill: var(--text-color-disabled);
+        }
+
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  .dd-quantity-wrapper-custom-caret {
+    .quantity-dropdown.custom-caret {
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--color-line);
+      border-radius: initial;
+      font-size: var(--text-size-label);
+      color: var(--text-color-dark);
+      max-width: 270px;
+      min-width: 115px;
+      width: unset;
+      padding-right: 30px;
+      text-align-last: center;
+      height: 26px;
+
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--button-primary-text-color) 50%),
+        linear-gradient(135deg, var(--button-primary-text-color) 50%, transparent 50%),
+        radial-gradient(var(--button-primary-background-color) 60%, transparent 63%);
+      background-position:
+        calc(100% - 11px) 11px,
+        calc(100% - 6px) 11px,
+        calc(100% + 1px) 0px;
+      background-size:
+        4px 5px,
+        5px 4px,
+        24px 24px;
+      background-repeat: no-repeat;
+
+      @media (min-width: theme.$md) and (max-width: theme.$lg)  {
+        max-width: 222px;
+      }
+      @media (min-width: theme.$sm) and (max-width: theme.$md) {
+        max-width: 248px;
+      }
+      @media (max-width: theme.$sm) {
+        max-width: 135px;
+      }
+    }
+  }
+
+  .ro-quantity-wrapper-show-quantity{
+    font-size: var(--text-size-label);
+
+    .quantity-label{
+      font-size: var(--text-size-label);
+    }
+  }
+}

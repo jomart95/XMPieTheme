@@ -1,0 +1,40 @@
+@use "_theme.scss";
+
+.image-gallery-duc {
+  div {
+    width: 100%;
+  }
+  .loading-duc-dots {
+    width: 54px;
+    .loading-dot {
+      width: 5px;
+    }
+  }
+}
+
+.image-section {
+  .lock-aspect-ratio {
+    .button.truncate {
+      &:hover {
+        box-shadow: none;
+      }
+      .uedit-tooltip {
+        left: -50px;
+        top: initial;
+        bottom: -90px;
+        &:after {
+          left: 155px;
+        }
+      }
+    }
+  }
+}
+.xmp-gs-cropper.cropper-wrapper {
+  @media (min-width: theme.$md) and (max-width: theme.$lg) {
+    max-width: none;
+    min-width: 386px;
+    width: 40%;
+    top: var(--header-height-mobile);
+    height: calc(100% - var(--header-height-mobile));
+  }
+}

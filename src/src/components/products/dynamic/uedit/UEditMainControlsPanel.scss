@@ -1,0 +1,225 @@
+@use "_theme.scss";
+
+#UEdit-main-controls-panel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  svg {
+   path {
+     fill: var(--color-icon);
+   }
+    circle, line {
+      stroke: var(--color-icon);
+    }
+  }
+  .button.truncate {
+    &:hover {
+      box-shadow: 2px 2px 4px 0px #00000040;
+      @media (min-width: theme.$md) {
+        .uedit-tooltip {
+          visibility: visible;
+          opacity: 1;
+          transition: opacity 0.1s ease 0.8s, visibility 0s linear 0.8s
+        }
+      }
+    }
+  }
+
+  .button-wrapper {
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-fill);
+      .icon-btn {
+        @media (max-width: theme.$lg) {
+          background-color: var(--color-fill);
+        }
+      }
+    }
+  }
+
+  .icon-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-line);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--white);
+
+    &.uedit-preview-mode {
+      overflow: visible;
+    }
+    .icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 100%;
+        path, line {
+          fill: var(--color-icon);
+        }
+      }
+    }
+  }
+  .uEdit-object-controls {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    .icon-btn {
+      margin-left: 16px;
+      @media (min-width: theme.$sm) and (max-width: theme.$md) {
+        margin-left: 20px;
+      }
+    }
+    @media (min-width: theme.$lg) {
+      .icon-title {
+        display: none;
+      }
+    }
+  }
+  .uEdit-general-controls {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    .hidden-tools {
+      display: none;
+      @media ((min-width: theme.$md) and (max-width: 932px)) or (max-width: 400px) {
+        &.show {
+          .bridge {
+            width: 100%;
+            height: calc(100% + 10px);
+            position: absolute;
+            top: -10px;
+          }
+          position: absolute;
+          top: 45px;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          border: 1px solid var(--color-line);
+          width: fit-content;
+          border-radius: 4px;
+          .icon-btn {
+            border: none;
+            margin: 0;
+            padding: 10px 15px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            &:hover {
+              box-shadow: none;
+              background-color: var(--skeleton-base-color);
+            }
+            .icon-holder {
+              width: 20px !important;
+              height: 20px !important;
+            }
+            .tool-title {
+              margin-left: 10px;
+              font-size: 14px;
+              &.disabled {
+                color: var(--color-button-disabled);;
+              }
+            }
+          }
+          .undo-redo-block {
+            display: flex;
+            flex-direction: column;
+            .tool-title {
+              display: flex;
+            }
+          }
+          .zoom-block {
+            display: none;
+          }
+        }
+      }
+      @media ((min-width: theme.$md) and (max-width: 875px)) or (max-width: 400px) {
+        &.show {
+          .zoom-block, .undo-redo-block  {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            .tool-title {
+              display: flex;
+            }
+          }
+        }
+      }
+      @media (max-width: theme.$md) {
+        &.show .zoom-block {
+          display: none;
+        }
+      }
+    }
+    .hidden-tools-btn.advanced-off {
+      display: none;
+    }
+    @media (min-width: 932px) or ((max-width: theme.$md) and (min-width: 400px)) {
+      .hidden-tools-btn.advanced-on {
+        display: none;
+      }
+    }
+    .icon-btn {
+      margin-left: 16px;
+      @media (min-width: theme.$sm) and (max-width: theme.$md) {
+        margin-left: 20px;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &[disabled] {
+       svg {
+         path {
+           fill: var(--color-button-disabled);
+         }
+       }
+      }
+    }
+  }
+  .add-object-button-block {
+    position: relative;
+    margin-left: 16px;
+    @media (min-width: theme.$sm) and (max-width: theme.$md) {
+      margin-left: 20px;
+    }
+    @media (max-width: theme.$lg) {
+      display: flex;
+    }
+  }
+  .uEdit-object-controls {
+    .delete {
+      &[disabled] {
+        svg {
+          path {
+            fill: var(--color-button-disabled);
+          }
+        }
+      }
+    }
+    display: flex;
+    .advanced-mode-tools {
+      display: flex;
+    }
+  }
+  @media (max-width: theme.$md) {
+    justify-content: center;
+    background-color: var(--color-fill);
+    border-top: 2px solid #FFF;
+    height: 60px;
+    align-items: center;
+    margin-bottom: initial;
+    .uedit-zoom-in, .uedit-zoom-out {
+      display: none;
+    }
+    .uEdit-object-controls {
+      display: flex;
+    }
+  }
+}

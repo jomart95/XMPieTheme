@@ -1,0 +1,34 @@
+var _path, _path2;
+const _excluded = ["title", "titleId"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
+import * as React from "react";
+import { forwardRef } from "react";
+const SvgCursorEditorInk = (_ref, ref) => {
+  let {
+      title,
+      titleId
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: ref,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M0.0189877 13.6645L0.612989 10.4635C0.687989 10.0545 0.884989 9.6805 1.18099 9.3825L9.98199 0.5805C10.756 -0.1925 12.015 -0.1945 12.792 0.5805L14.42 2.2085C15.194 2.9835 15.194 4.2435 14.42 5.0185L5.61599 13.8215C5.31999 14.1165 4.94599 14.3125 4.53799 14.3875L1.33599 14.9815C1.26599 14.9935 1.19799 15.0005 1.12999 15.0005C0.832989 15.0005 0.544988 14.8835 0.330988 14.6695C0.0679874 14.4055 -0.0490122 14.0305 0.0189877 13.6645Z",
+    fill: "white"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    d: "M0.0189877 13.6645L0.612989 10.4635C0.687989 10.0545 0.884989 9.6805 1.18099 9.3825L9.98199 0.5805C10.756 -0.1925 12.015 -0.1945 12.792 0.5805L14.42 2.2085C15.194 2.9835 15.194 4.2435 14.42 5.0185L5.61599 13.8215C5.31999 14.1165 4.94599 14.3125 4.53799 14.3875L1.33599 14.9815C1.26599 14.9935 1.19799 15.0005 1.12999 15.0005C0.832989 15.0005 0.544988 14.8835 0.330988 14.6695C0.0679874 14.4055 -0.0490122 14.0305 0.0189877 13.6645ZM12.472 5.1965L13.632 4.0365L13.631 3.1885L11.811 1.3675L10.963 1.3685L9.80299 2.5285L12.472 5.1965ZM4.31099 13.1585C4.47099 13.1285 4.61799 13.0515 4.73399 12.9345L11.587 6.0815L8.91899 3.4135L2.06599 10.2655C1.94899 10.3835 1.87199 10.5305 1.84099 10.6915L1.36699 13.2485L1.75199 13.6335L4.31099 13.1585Z",
+    fill: "black"
+  })));
+};
+const ForwardRef = /*#__PURE__*/forwardRef(SvgCursorEditorInk);
+export { ForwardRef as ReactComponent };
+export default __webpack_public_path__ + "static/media/cursor-editorInk.5ea0869845becef03a065090fee2a9a5.svg";

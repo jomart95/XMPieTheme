@@ -1,0 +1,58 @@
+@use "_theme.scss";
+
+.cart-ng-loading-dialog-wrapper {
+  .loading-dialog-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    .cart-ng-loading-dialog {
+
+      @media (max-width: theme.$sm) {
+        margin: 0 20px;
+      }
+
+      .modal-content {
+        max-width: 330px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .dialog-content {
+          padding: 48px; /* not 50px so the text won't be cut into 2 lines */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          @media (max-width: theme.$sm) {
+            padding: 48px 20px;
+          }
+
+          .hour-glass-icon {
+            margin-bottom: 30px;
+          }
+
+          .dialog-text {
+            font-size: var(--text-size-h4);
+            color: var(--text-color-ultra-dark);
+            margin-bottom: 30px;
+            text-align: center;
+
+            @media (max-width: theme.$sm) {
+              margin-bottom: 20px;
+            }
+          }
+
+          .loading-dots {
+            height: 10px;
+            margin-left: auto;
+
+            .loading-dot {
+              background-color: var(--color-highlight);
+            }
+          }
+        }
+      }
+    }
+  }
+}

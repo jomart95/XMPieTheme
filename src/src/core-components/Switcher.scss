@@ -1,0 +1,46 @@
+@use '_theme.scss';
+
+.switcher {
+  button {
+    border:none;
+    background: none;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .react-aria-Label, .switcher-selected {
+    display: none;
+  }
+
+}
+
+.switcher-popup{
+  background: var(--color-fill);
+  box-shadow: 0 4px 11px 0 rgba(0,0,0,0.5);
+  border-bottom: 1px solid var(--color-line);
+  background-color: var(--submenu-background-color);
+  color: var(--text-color-submenu);
+  border-radius: 6px;
+
+  [role="listbox"]:focus {
+    outline: none;
+  }
+
+  [role="option"] {
+    height: 40px;
+    padding: 5px 20px 5px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: var(--text-size-regular);
+
+    &:hover, &:focus {
+      background-color: var(--color-fill);
+      outline: none;
+    }
+  }
+}
+

@@ -1,0 +1,331 @@
+@use "_theme.scss";
+
+.modal {
+
+  &.dynamic-proof-approval {
+    .modal-dialog[role="document"] {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      max-width: unset;
+
+      @media (min-width: theme.$lg) and (min-height: theme.$md){
+        width: calc(100% - 120px);
+        height: calc(100% - 120px);
+        margin:60px;
+      }
+
+    }
+
+    .modal-content {
+      border: unset;
+      border-radius: unset;
+
+      .modal-body {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        overflow-y: auto;
+
+
+        @media (max-width: theme.$lg) {
+          max-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .carousel-dots-loader {
+          position: absolute;
+          height: 50px;
+          width: 84px;
+          border-radius: 5px;
+          background: var(--white);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .loading-dots {
+            .loading-dot {
+              margin-left: 10px;
+            }
+            div {
+              background: var(--button-primary-background-color);
+            }
+          }
+
+        }
+
+        .approval-preview {
+          position: relative;
+          width: 65%;
+          flex-direction: column;
+          background-color: var(--color-fill);
+          display: flex;
+          padding: 20px;
+
+          @media (max-width: theme.$lg) {
+            display: none;
+          }
+
+          .preview-image {
+            flex-grow: 1;
+            width: 100%;
+
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            overflow: hidden;
+            padding: 20px 20px 10px 20px;
+            @media (max-width: theme.$lg) {
+              padding: 20px;
+            }
+
+            .image-loader {
+              width:100%;
+
+              img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+
+              }
+            }
+          }
+
+          .preview-arrows-left, .preview-arrows-right {
+            position: absolute;
+            top: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+
+            @media (max-width: theme.$lg) {
+              display: none;
+            }
+          }
+
+          .preview-arrows-right {
+            right: 30px;
+            @media (max-width: theme.$lg) {
+              right: 0;
+            }
+          }
+
+          .preview-arrows-left {
+            left: 30px;
+            @media (max-width: theme.$lg) {
+              left: 0;
+            }
+          }
+
+          &:hover {
+            .preview-arrows-left, .preview-arrows-right {
+              opacity: 1;
+            }
+          }
+
+          .preview-page-title {
+            margin: 10px auto 0;
+            color: var(--text-color-dark);
+            font-size: var(--text-size-regular);
+            @media (min-width: theme.$lg) {
+              margin: 0 auto 15px;
+            }
+          }
+
+          .dot-carousel-wrapper {
+
+            height: 30px;
+            @media (min-width: theme.$lg) {
+              align-items: center;
+              padding-bottom: 20px;
+            }
+          }
+
+          .proof-failure {
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 130px);
+          }
+          .preview-wrapper {
+            @media (min-width: theme.$md) {
+              width: 100%;
+            }
+            .thumbnail-title-wrapper{
+              margin: 10px auto 10px;
+            }
+          }
+        }
+
+        .mobile-approval-preview {
+          padding: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          position: relative;
+          overflow-x: clip;
+
+          .preview-image {
+            max-height: 54vh;
+            min-height: 54vh;
+          }
+
+          .download-pdf-proof {
+            width: 186px;
+          }
+
+          .proof-failure {
+            margin-top: 20px;
+            position: absolute;
+
+            &.proof-pdf-failure {
+              position: inherit;
+            }
+          }
+
+          .preview-arrows-left, .preview-arrows-right {
+            @media (max-width: theme.$lg) {
+              display: none;
+            }
+          }
+
+          @media (min-width: theme.$lg) {
+            display: none;
+          }
+
+          .preview-page-title {
+            margin: 0 auto 10px auto;
+            color: var(--text-color-dark);
+            font-size: var(--text-size-regular);
+          }
+
+          .carousel-dots-loader {
+            z-index: 1;
+          }
+
+          @media (max-width: theme.$md) {
+            .carousel-root {
+                width: 100%;
+                height: 100%;
+            }
+          }
+        }
+
+        .approval-title-desktop {
+          color: var(--text-color-ultra-dark);
+          font-size: var(--text-size-h2);
+          margin: 0 40px 30px 40px;
+          width: 100%;
+
+          @media (max-width: theme.$lg) {
+            display: none;
+          }
+        }
+
+        .approval-title-mobile {
+          text-align: center;
+          font-size: var(--text-size-h4);
+          padding: 60px 20px 10px;
+          margin-bottom: 0;
+
+          @media (min-width: theme.$lg) {
+            display: none;
+          }
+        }
+
+        .proof-approval {
+          background-color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          width: 35%;
+          padding: 0 40px;
+          @media (max-width: theme.$lg) {
+            width: 100%;
+            padding: 35px 20px;
+          }
+          @media (max-width: theme.$md) {
+            padding-top: 0;
+          }
+
+
+          .approval-checkbox {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            font-size: var(--text-size-label);
+            color: var(--text-color-dark);
+            margin: 0 40px 20px 40px;
+            width: 100%;
+
+            @media (max-width: theme.$lg) {
+              margin-top: 20px;
+              width: 100%;
+            }
+
+            .checkbox-label {
+              vertical-align: top;
+            }
+
+            .required {
+              color: #ff625a;
+              margin-left: 5px;
+            }
+
+            input {
+              cursor: pointer;
+              border: 1px solid var(--color-line);
+              margin-right: 8px;
+              border-radius: 5px;
+              width: 20px;
+              height: 20px;
+              color: var(--color-line);
+            }
+          }
+
+          .proof-approval-required {
+            color: var(--color-error);
+            font-size: var(--text-size-regular);
+            margin: 0 40px 20px 40px;
+            width: 100%;
+
+            @media (max-width: theme.$lg) {
+              width: 100%;
+            }
+          }
+
+          .add-to-cart-button {
+            height: 45px;
+            margin-bottom: 50px;
+            margin-top: 10px;
+            width: 297px;
+
+            @media (max-width: theme.$lg) {
+              width: 100%;
+            }
+
+          }
+        }
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      font-size: 40px;
+      line-height: 20px;
+      cursor: pointer;
+      font-weight: normal;
+      color: var(--text-color-medium);
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}

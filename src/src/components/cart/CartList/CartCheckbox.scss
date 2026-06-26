@@ -1,0 +1,78 @@
+@use '_theme.scss';
+
+.cart-checkbox-check {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  display: none;
+}
+
+.cart-ng-checkbox-container {
+  input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  input:checked + label > svg {
+    height: 24px;
+    animation: ease-in-out 0.2s forwards;
+  }
+
+  label:active::after {
+    background-color: var(--color-fill);
+  }
+
+  label {
+    color: var(--text-color-ultra-dark);
+    line-height: 22px;
+    cursor: pointer;
+    position: relative;
+
+    @media (max-width: theme.$lg) {
+      line-height: 16px;
+    }
+
+    &:after {
+      content: "";
+      height: 22px;
+      width: 22px;
+      margin-right: 20px;
+      float: left;
+      border: 1px solid var(--text-color-ultra-dark);
+      border-radius: 5px;
+      transition: 0.15s all ease-out;
+
+      @media (max-width: theme.$lg) {
+        height: 16px;
+        width: 16px;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .icon {
+    width: unset !important;
+    height: unset !important;
+
+    svg {
+      float: left;
+      height: 22px;
+      width: 22px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      stroke-dasharray: 33; //Firefox fix
+
+      @media (max-width: theme.$lg) {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+}

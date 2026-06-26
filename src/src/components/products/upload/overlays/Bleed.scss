@@ -1,0 +1,36 @@
+@use "_theme.scss";
+
+.preview-wrapper {
+  @media (min-width: theme.$md) {
+    .double-side-page.auto {
+      .overlay[data-overlay-type="bleed"] {
+        height: calc(100% - 34px);
+      }
+    }
+  }
+  .overlay[data-overlay-type="bleed"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    img {
+      position: absolute;
+      width: 26px;
+      height: 20px;
+    }
+
+    .bleed-wrapper {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      border: 2px dashed black;
+    }
+  }
+}

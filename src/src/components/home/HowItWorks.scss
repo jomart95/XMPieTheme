@@ -1,0 +1,152 @@
+@use '_theme.scss';
+
+.mcf-hiw {
+  /* Local tokens map to the client skin (with base fallbacks) */
+  --hiw-panel:  var(--surface-dark-color, #0f2547);
+  --hiw-accent: var(--button-primary-background-color, #3d8fd4);
+  --hiw-gold:   var(--accent-secondary, #c79a3b);
+  --hiw-muted:  rgba(255, 255, 255, 0.45);
+  --hiw-rule:   rgba(255, 255, 255, 0.15);
+
+  width: 100%;
+  padding: 80px 48px;
+  background: var(--hiw-panel);
+}
+
+.mcf-hiw__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.mcf-hiw__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--hiw-gold);
+
+  &::before {
+    content: '';
+    flex-shrink: 0;
+    width: 18px;
+    height: 2px;
+    background: var(--hiw-gold);
+  }
+}
+
+.mcf-hiw__title {
+  margin-bottom: 12px;
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: clamp(32px, 3.8vw, 50px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.mcf-hiw__gold { color: var(--hiw-gold); }
+
+.mcf-hiw__sub {
+  max-width: 520px;
+  margin-bottom: 60px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--hiw-muted);
+}
+
+.mcf-hiw__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.mcf-hiw__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+  text-align: center;
+
+  /* connector line from this circle's centre to the next */
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 28px;            /* vertical centre of the 56px circle */
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background: var(--hiw-rule);
+    z-index: 0;
+  }
+}
+
+.mcf-hiw__circle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background: var(--hiw-accent);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.04);
+}
+
+.mcf-hiw__num {
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+}
+
+.mcf-hiw__step-title {
+  margin-bottom: 10px;
+  font-family: var(--font-family-condensed);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.mcf-hiw__step-desc {
+  max-width: 220px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--hiw-muted);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: theme.$lg) {
+  .mcf-hiw {
+    padding: 56px 24px;
+  }
+
+  .mcf-hiw__sub {
+    margin-bottom: 44px;
+    max-width: none;
+  }
+
+  .mcf-hiw__steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 16px;
+  }
+
+  /* drop the horizontal connector once the steps wrap */
+  .mcf-hiw__step:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: theme.$xs) {
+  .mcf-hiw__steps {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}

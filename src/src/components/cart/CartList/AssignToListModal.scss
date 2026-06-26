@@ -1,0 +1,125 @@
+@use "_theme.scss";
+
+.assign-to-list-dialog.fade.show {
+
+  .modal-dialog {
+    position: relative;
+    top: calc(50% - 137px);
+
+    .modal-content {
+      width: auto;
+      margin: 0 20px;
+      max-width: 536px;
+
+      .close-modal {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--color-line);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @media (max-width: theme.$sm) {
+          padding: 16px 20px;
+          align-items: center;
+        }
+
+        .title {
+          font-size: var(--text-size-label);
+          color: var(--text-color-ultra-dark);
+          margin: 0;
+
+          @media (max-width: theme.$sm) {
+            font-size: var(--text-size-h4);
+          }
+        }
+
+        .close-button {
+          border: none;
+          background: none;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .modal-body {
+        padding: 30px 20px;
+      }
+
+
+      .assign-to-list-dialog-no-lists{
+        input {
+          color: var(--text-color-dark);
+          border-color: var(--color-line);
+        }
+      }
+
+      .label {
+        color: var(--text-color-ultra-dark);
+        font-size: var(--text-size-label);
+        line-height: var(--text-size-label);
+        margin: 0 0 10px 0;
+      }
+
+      label.radio-button {
+        color: var(--text-color-ultra-dark);
+        padding-left: 30px;
+        margin-bottom: 10px;
+      }
+      .action-buttons {
+        display: flex;
+        flex-direction: row;
+        margin-top: 50px;
+
+        .button {
+          width: calc((100% - 15px) / 2);
+          height: 40px;
+          padding: 3px 10px;
+        }
+
+        .button-primary {
+          margin-left: 15px;
+          @media (max-width: theme.$sm) {
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .assign-to-list-dialog-existing-list, .assign-to-list-dialog-existing-new {
+        margin-bottom: 10px;
+        .assign-to-list-dialog-new-input-error {
+          border:1px solid var(--color-error);
+        }
+      }
+
+      .assign-to-list-dialog-existing-new {
+        margin-top: 30px;
+
+        input {
+          color: var(--text-color-dark);
+          border-color: var(--color-line);
+        }
+      }
+      .drop-down.dropdown {
+        width: 100%;
+
+        button {
+          width: 100%;
+          &:hover {
+            background-color: var(--color-fill);
+          }
+        }
+
+        .assign-to-list-dialog-existing-list-dropdown {
+          width: 100%;
+          .drop-down-item-container {
+            color: var(--text-color-dark);
+          }
+        }
+      }
+      .assign-to-list-dialog-new-error {
+        color: var(--color-error);
+        font-size: var(--text-size-regular);
+      }
+    }
+  }
+}

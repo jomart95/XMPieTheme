@@ -1,0 +1,55 @@
+@use "_theme.scss";
+
+.pdf-viewer-upload-document-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &.replace-file {
+    margin-bottom:30px;
+    @media (max-width: theme.$md) {
+      margin-bottom: initial;
+      padding: 0 20px;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 30px;
+      height: 35px;
+
+      @media (max-width: theme.$md) {
+        height: 40px;
+        width: 100%;
+      }
+    }
+  }
+
+  .button-primary {
+    padding: 8px 10px 10px;
+    max-width: 270px;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
+    @media (max-height: 620px) {
+      padding: 3px 30px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: theme.$md) {
+      margin-top: 20px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .fileInput {
+    display: none;
+  }
+}

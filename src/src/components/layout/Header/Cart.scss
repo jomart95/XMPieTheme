@@ -1,0 +1,27 @@
+.cart {
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  .cart-icon-container {
+    display: flex;
+
+    .cart-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--button-primary-background-color);
+      font-size: 8px;
+      color: var(--button-primary-text-color);
+      z-index: 1;
+      position: relative;
+      top: -4;
+      left: -10;
+    }
+  }
+}

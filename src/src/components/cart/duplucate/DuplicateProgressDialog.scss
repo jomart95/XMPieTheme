@@ -1,0 +1,177 @@
+@use "_theme.scss";
+
+.cart-ng-duplicate-progress-dialog-wrapper {
+
+  .duplicate-progress-dialog-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    .cart-ng-duplicate-progress-dialog {
+
+      @media (max-width: theme.$sm) {
+        margin: 0 20px;
+      }
+
+      .modal-content {
+        max-width: 537px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 537px;
+
+        @media (max-width: theme.$md) {
+          position: relative;
+          left:-18px;
+        }
+
+        @media (max-width: theme.$sm) {
+          position: relative;
+          width: calc(100vw - 40px);
+          margin-left: 20px;
+          margin-right: 20px;
+          left:0;
+        }
+
+        .cart-ng-duplicate-process-close {
+          background: none;
+          border: none;
+          padding: 20px;
+          position: absolute;
+          right: 0;
+          cursor: pointer;
+          z-index: 1;
+        }
+
+        .dialog-content {
+          padding: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          @media (max-width: theme.$sm) {
+            padding: 48px 20px;
+          }
+
+          .cart-ng-duplicate-progress {
+            font-size: var(--text-size-h4);
+            color: var(--text-color-ultra-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .hour-glass-icon {
+              margin-bottom: 30px;
+            }
+
+            .dialog-text {
+              font-size: var(--text-size-h4);
+              color: var(--text-color-ultra-dark);
+              margin-bottom: 30px;
+              text-align: center;
+
+              > div {
+                text-align: center;
+              }
+
+              > span:first-child {
+                display: block;
+                padding-bottom: 12px;
+              }
+
+              @media (max-width: theme.$sm) {
+                margin-bottom: 20px;
+              }
+            }
+          }
+
+          .cart-ng-duplicate-success {
+            font-size: var(--text-size-h4);
+            color: var(--text-color-ultra-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .cart-ng-duplicate-success-icon {
+              margin-bottom: 30px;
+            }
+
+            .dialog-text {
+              line-height: 40px;
+              display: flex;
+              justify-content: center;
+                align-items: center;
+              flex-direction: column;
+
+              > div {
+                text-align: center;
+              }
+
+              .success-text {
+                color: var(--color-success);
+              }
+            }
+          }
+
+          .cart-ng-duplicate-failed {
+            font-size: var(--text-size-h4);
+            color: var(--text-color-ultra-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            > div {
+              text-align: center;
+            }
+
+            .cart-ng-duplicate-failed-icon {
+              margin-bottom: 30px;
+
+              svg {
+                path {
+                  fill: var(--color-error);
+                }
+              }
+            }
+
+            .cart-ng-duplicate-partial-failed-icon {
+              margin-bottom: 30px;
+            }
+
+            .dialog-text {
+              line-height: 40px;
+              text-align: center;
+
+              .failed-text {
+                color: var(--color-error);
+                line-height: 27px;
+                margin-top: 10px;
+              }
+
+              .partial-failed-text {
+                color: var(--color-warning);
+                line-height: 27px;
+                margin-top: 10px;
+              }
+            }
+          }
+
+          .loading-dots {
+            height: 10px;
+            margin-left: auto;
+
+            .loading-dot {
+              background-color: var(--color-highlight);
+            }
+          }
+
+
+
+        }
+      }
+    }
+  }
+}
