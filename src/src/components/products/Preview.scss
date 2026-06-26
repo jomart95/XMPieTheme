@@ -382,3 +382,32 @@ $preview-height-btn-view-proof: 45px;
     }
   }
 }
+/* ===== McFaddin: single-static preview hugs the art on mobile too ===== */
+@media (max-width: theme.$md) {
+  .preview-wrapper.single-static {
+    .preview-area-wrapper { min-height: 0; }
+
+    .carousel-root,
+    .carousel-slider,
+    .slider-wrapper,
+    .slider,
+    .slide,
+    .inner-carousel-image-wrapper,
+    .image-wrapper {
+      height: auto;
+      max-height: none;
+    }
+
+    .image-wrapper { padding: 0; }
+
+    .image-wrapper img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 60vh;     /* cap so a tall portrait doesn't eat the whole phone screen */
+      object-fit: contain;
+      margin: 0 auto;
+    }
+  }
+}

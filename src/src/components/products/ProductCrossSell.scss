@@ -19,6 +19,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    align-items: start;   /* each card wraps its own content; no stretch to tallest */
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
@@ -42,11 +43,20 @@
   }
 
   .mcf-cross-sell-card-image {
-    display: block;
-    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #f1f3f6;
+    padding: 12px;
+    box-sizing: border-box;
 
-    img { width: 100%; height: 100%; object-fit: cover; }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;          /* show the art's true shape, no crop */
+      max-height: 320px;     /* cap so a very tall poster can't run away */
+      object-fit: contain;
+    }
   }
 
   .mcf-cross-sell-card-body {
