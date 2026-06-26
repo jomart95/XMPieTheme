@@ -71,3 +71,44 @@
     }
   }
 }
+
+// McFaddin: condensed-caps Add to Cart — right-aligned under the price column
+body.xmpie-theme .product-instance .right .add-to-cart-button-wrapper {
+  display: flex;
+  justify-content: flex-end;   // hug the right edge
+  width: auto;                 // override the source's fit-content
+  max-width: 600px;            // same cap as the summary above it
+  margin-left: 60px;           // same left inset as the summary
+  margin-right: 0;
+
+  .button.button-primary.add-to-cart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 180px;
+    margin: 0;
+
+    font-family: var(--font-family-condensed, 'Roboto Condensed', sans-serif);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    background-color: #1e3a5f;
+    color: #fff;
+    border: none;
+    border-radius: var(--button-border-radius);
+    padding: 12px 32px;
+  }
+
+  .button.button-primary.add-to-cart-button:hover {
+    background-color: #0f2547;
+  }
+}
+// McFaddin: align Save to draft under the Add to Cart button
+body.xmpie-theme .product-instance .right .product-instance-save-to-draft-wrapper {
+  justify-content: flex-end;   // was center — now lines up with Add to Cart
+  max-width: 600px;
+  margin-left: 60px;
+  margin-right: 0;
+}

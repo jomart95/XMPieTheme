@@ -1,0 +1,47 @@
+body.xmpie-theme .product-layout .main-wrapper {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mcf-product-specs {
+  max-width: 600px;
+  margin: 28px 60px 0;
+  padding-top: 24px;
+  border-top: 2px solid #e3e7ee;
+
+  .mcf-product-specs-title {
+    font-family: var(--font-family-condensed, 'Roboto Condensed', sans-serif);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+    color: #1e3a5f;
+    margin: 0 0 16px;
+  }
+
+  .mcf-product-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr { border-bottom: 1px solid #eef1f5; }
+
+    th {
+      text-align: left;
+      width: 45%;
+      padding: 12px 16px 12px 0;
+      font-weight: 500;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #5b6675;
+    }
+
+    td {
+      padding: 12px 0;
+      font-weight: 500;
+      font-size: 15px;
+      color: #1e3a5f;
+    }
+  }
+}

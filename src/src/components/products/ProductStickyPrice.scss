@@ -452,3 +452,21 @@
 
   }
 }
+// McFaddin: navy condensed sticky Add to Cart — matches the main CTA
+body.xmpie-theme .product-sticky-price .sticky-add-to-cart-button {
+  background-color: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: 12px 32px;
+  min-width: 180px;
+
+  font-family: var(--font-family-condensed, 'Roboto Condensed', sans-serif);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  span { color: #fff; }
+
+  &:hover { background-color: #0f2547; }
+}

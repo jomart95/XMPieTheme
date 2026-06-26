@@ -15,6 +15,8 @@ import ProductOrderSummary from '../ProductOrderSummary'
 import ProductStickyPrice from '../ProductStickyPrice'
 import ProductThumbnailsPreview from '../dynamic/ProductThumbnailsPreview'
 import ProductLayout from '../ProductLayout'
+import ProductSpecifications from '../ProductSpecifications'
+import ProductCrossSell from '../ProductCrossSell'
 import Price from './Price'
 import {
   convertPropertiesFromApiToPropertiesObject,
@@ -926,6 +928,7 @@ const StaticProduct = ({
   const isUEdit = uEditEnabled(product)
 
   return (
+    <div classname="mcf-product-page">
     <ProductLayout className="product-instance"
                    dynamic={product.Type === productTypes.DYNAMIC}
                    upload={isNewUpload}
@@ -1085,9 +1088,9 @@ const StaticProduct = ({
                 : getContinueButtonText()}
           </div>
         </div>
+<ProductSpecifications productModel={product} />
         {
-          !isCartOrderItem && allowSaveToDraft && (
-            <div className="product-instance-save-to-draft-wrapper">
+!isCartOrderItem && allowSaveToDraft && product.Type !== productTypes.STATIC && (            <div className="product-instance-save-to-draft-wrapper">
               {
                 !isOrderItemSavedToDraft &&
                 <ButtonAria
@@ -1164,6 +1167,8 @@ const StaticProduct = ({
       </right>
 
     </ProductLayout>
+      <ProductCrossSell />
+      </div>
   )
 }
 
