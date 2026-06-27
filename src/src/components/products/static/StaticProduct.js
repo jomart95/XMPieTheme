@@ -608,7 +608,7 @@ const cleanCustomState = () => {
     }
   }
 
-  const loadProductProperties = async (updatedOrderItem, initialQuantity, product, fastPreviewEnabled) => {
+const loadProductProperties = async (updatedOrderItem, initialQuantity, product, fastPreviewEnabled) => {
     try {
       const propertiesFromApi = await UStoreProvider.api.orders.getProperties(updatedOrderItem.ID)
       const updatedPropertiesObject = convertPropertiesFromApiToPropertiesObject(
@@ -620,15 +620,11 @@ const cleanCustomState = () => {
       setPropertiesObject(updatedPropertiesObject)
       if (product.Type === productTypes.DYNAMIC) {
         const isUEdit = uEditEnabled(product)
-
-        if (paramOrderItemId) {
-          if (!isUEdit) {
-            setTimeout(() => createPreview(updatedPropertiesObject, paramOrderItemId, propertiesFromApi), 0)
-          }
-        } else if (!fastPreviewEnabled) {
-          if (!isUEdit) {
-            setTimeout(() => createPreview(updatedPropertiesObject, updatedOrderItem.ID, propertiesFromApi), 0)
-          }
+        // Restore a saved proof for reorder/draft, but don't auto-generate one on a
+        // fresh load — it renders blank before the customer chooses. On-change
+        // auto-proof still fires via onFormChange.
+        if (paramOrderItemId && !isUEdit) {
+          setTimeout(() => createPreview(updatedPropertiesObject, paramOrderItemId, propertiesFromApi), 0)
         }
       }
 
@@ -648,7 +644,6 @@ const cleanCustomState = () => {
       setPricingError(e)
     }
   }
-
   const loadProductProofUrl = (productFromApi, orderItemId) => {
     setProofUrl(productFromApi.Proof ? `${productFromApi.Proof.Url}&OrderItemID=${orderItemId}` : null)
   }
