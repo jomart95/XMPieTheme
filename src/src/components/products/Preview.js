@@ -34,7 +34,8 @@ const Preview = ({
   proofModalOpen,
   showRefreshPreview,
   onProofPreviewClick,
-  showLoaderDots,
+ showLoaderDots,
+  awaitingInitialProof = false,
   disabledRefreshPreviewButton,
   isKitProduct = false,
   showThumbs = false,
@@ -80,7 +81,15 @@ const Preview = ({
   const getThumbnailTitleWrapper = () => {
     const getTitle = (value) => <div className="thumbnail-title-wrapper">{value}</div>
 
-    // McFaddin: relabel the document's "Page 1/Page 2" as Front/Back side
+    // McFaddin: for double-sided products label by position, not by the document's
+    // page name or the theme's "Page N" string — index 0 is the front, index 1 the
+    // back. Holds for both the default template thumbnails and the resolved proof,
+    // so it never depends on how the pages were named in InDesign.
+    if (images.length === 2) {
+      return getTitle(activeImage === 0 ? 'Front Side' : 'Back Side')
+    }
+
+    // Fallback for single- or multi-page (> 2) products.
     const name = images[activeImage]?.DisplayName?.trim()
     if (name === 'Page 1') return getTitle('Front Side')
     if (name === 'Page 2') return getTitle('Back Side')
@@ -121,7 +130,8 @@ const Preview = ({
     <>
       <div className={wrapperClass}>
         {isNewUpload ? <PDFViewer properties={properties} isMobile={isMobile} product={product} orderItem={orderItem} stickyPreview={true} isMobilePreview={isMobilePreview}/> :
-        <div className="preview-area-wrapper">
+       <div className={`preview-area-wrapper${awaitingInitialProof ? ' awaiting-initial-proof' : ''}`}>
+          {awaitingInitialProof && <div className="preview-initial-loader"><LoadingDots/></div>}
           <Carousel
               infiniteLoop={true}
               showIndicators={false}

@@ -29,7 +29,7 @@ body.xmpie-theme .product-layout .main-wrapper {
     th {
       text-align: left;
       width: 45%;
-      padding: 12px 16px 12px 0;
+      padding: 18px 16px 18px 0;
       font-weight: 500;
       font-size: 13px;
       text-transform: uppercase;
@@ -38,10 +38,24 @@ body.xmpie-theme .product-layout .main-wrapper {
     }
 
     td {
-      padding: 12px 0;
+      padding: 18px 0;
       font-weight: 500;
       font-size: 15px;
       color: #1e3a5f;
     }
+  }
+}
+// McFaddin: on desktop, stretch the right column to the grey preview panel's
+// height and drop the specs (and save-to-draft) to its bottom edge.
+// Layout-coupled — verify at desktop widths; remove this @media block to revert.
+@media (min-width: 1201px) {
+  body.xmpie-theme .product-instance .right {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-height-desktop) - 60px);
+  }
+
+  body.xmpie-theme .product-instance .right .mcf-product-specs {
+    margin-top: auto;
   }
 }

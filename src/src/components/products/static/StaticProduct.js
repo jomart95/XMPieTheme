@@ -101,6 +101,7 @@ const StaticProduct = ({
   const [sectionToOpen, setSectionToOpen] = useState(0)
   const [searchParams, setSearchParams] = useSearchParams()
   const [poofPreviewError, setPoofPreviewError] = useState(false)
+  const [awaitingInitialProof, setAwaitingInitialProof] = useState(false)
   const topMarkerRef = useRef(null)
   const easyUploadTopMarkerRef = useRef(null)
   const bottomMarkerRef = useRef(null)
@@ -270,9 +271,10 @@ const StaticProduct = ({
     fastProofService.onError = () => {
       setDisabledRefreshPreviewButton(() => false)
       fastProofService.breakCurrentLoop()
-      setPoofPreviewError(true)
+  setPoofPreviewError(true)
       loadingTimeout && clearTimeout(loadingTimeout)
       setShowLoaderDots(false)
+      setAwaitingInitialProof(false)
     }
 
     fastProofService.onProof = async (proof) => {
@@ -302,9 +304,10 @@ const StaticProduct = ({
       if (!hadError) {
         setProductThumbnails({ Thumbnails: proofedDownloaded })
       }
-      loadingTimeout && clearTimeout(loadingTimeout)
+  loadingTimeout && clearTimeout(loadingTimeout)
       setShowLoaderDots(false)
       setPoofPreviewError(hadError)
+      setAwaitingInitialProof(false)
     }
     if (showRefreshPreview || searchParams.has('OrderItemId')) {
       setShowLoaderDots(true)
@@ -618,13 +621,22 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
 
       setProperties(propertiesFromApi)
       setPropertiesObject(updatedPropertiesObject)
-      if (product.Type === productTypes.DYNAMIC) {
+     if (product.Type === productTypes.DYNAMIC) {
         const isUEdit = uEditEnabled(product)
-        // Restore a saved proof for reorder/draft, but don't auto-generate one on a
-        // fresh load — it renders blank before the customer chooses. On-change
-        // auto-proof still fires via onFormChange.
         if (paramOrderItemId && !isUEdit) {
-          setTimeout(() => createPreview(updatedPropertiesObject, paramOrderItemId, propertiesFromApi), 0)
+          // Reorder/draft: restore the saved proof. paramOrderItemId is in the URL,
+          // so createPreview gets a valid id even though orderItem state is stale.
+          setAwaitingInitialProof(true)
+          setTimeout(() => createPreview(updatedPropertiesObject, updatedOrderItem.ID, propertiesFromApi), 0)
+        } else if (!paramOrderItemId && !isUEdit && !fastPreviewEnabled) {
+          // Fresh load: resolve the default-option proof once (Back Office default
+          // back flows in via propertiesFromApi). Pass updatedOrderItem.ID explicitly
+          // — setOrderItem hasn't committed yet, so the createPreview closure's
+          // orderItem.ID is still undefined; that missing id (not properties) was
+          // what pushed an empty proof request -> errorPage in the prior attempt.
+          // Gate on !fastPreviewEnabled to match the on-change auto-proof contract
+          // (== !showRefreshPreview, using the param to avoid stale state).
+          setTimeout(() => createPreview(updatedPropertiesObject, updatedOrderItem.ID, propertiesFromApi), 0)
         }
       }
 
@@ -947,10 +959,11 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
                  uEditDisplayContentObjectList={uEditDisplayContentObjectList(product)}
           />}
         {!isNewUpload && !uEditEnabled(product) &&
-            <Preview
+          <Preview
                 poofPreviewError={poofPreviewError}
                 productThumbnails={productThumbnails}
                 showLoaderDots={showLoaderDots}
+                awaitingInitialProof={awaitingInitialProof}
                 product={product}
                 orderItem={orderItem}
                 setProofModalOpen={setProofModalOpen}
@@ -989,6 +1002,8 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
           ref={topPriceRef}
           isPriceCalculating={pageState === State.calculatingPrice || pageState === State.loading}
           price={price} showMinimumPrice={!!price.IsMinimumPrice}
+          quantity={quantity}
+          unitName={product.Unit?.PackType ? product.Unit.PackType.Name : product.Unit?.ItemType?.Name}
         />}
         <div ref={topMarkerRef} className="price-top-marker"></div>
         <div className="product-instance-wizard">

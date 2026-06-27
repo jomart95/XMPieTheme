@@ -144,8 +144,12 @@ $preview-height-btn-view-proof: 45px;
     }
   }
 
-  .thumbnail-title-wrapper {
+.thumbnail-title-wrapper {
     margin: 10px auto 0;
+    font-family: var(--font-family-condensed);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     @media (max-width: theme.$md) {
       margin: 5px auto 0;
     }
@@ -430,6 +434,33 @@ $preview-height-btn-view-proof: 45px;
   .image-wrapper { padding: 0.25in !important; }
   .inner-carousel-image-wrapper { align-items: center !important; }
 
-  .thumbs-wrapper ul.thumbs,
+.thumbs-wrapper ul.thumbs,
   .multi-carousel { justify-content: center; }
+
+  /* McFaddin: centre the thumbnail strip under the proof. When the items fit
+     (no paging) the carousel hides its arrows, so the wrapper is the container's
+     only child — use that to detect the no-slide case and centre the absolutely
+     positioned track. Paging products still render arrows, so the wrapper is not
+     :only-child and the JS-driven slide behaviour is left untouched. */
+  .multi-carousel-container .multi-carousel-wrapper:only-child .multi-carousel {
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+}
+// McFaddin: cover the preview area with a loader while the initial default-option
+// proof resolves on fresh dynamic load, so the unresolved/stacked default thumbnails
+// never paint. Cleared when onProof (or onError) lands -> resolved proof reveals.
+.preview-area-wrapper.awaiting-initial-proof {
+  position: relative;
+  > *:not(.preview-initial-loader) {
+    visibility: hidden;
+  }
+}
+.preview-initial-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }

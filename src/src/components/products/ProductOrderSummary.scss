@@ -75,10 +75,10 @@
 // McFaddin: condensed-caps Add to Cart — right-aligned under the price column
 body.xmpie-theme .product-instance .right .add-to-cart-button-wrapper {
   display: flex;
-  justify-content: flex-end;   // hug the right edge
-  width: auto;                 // override the source's fit-content
-  max-width: 600px;            // same cap as the summary above it
-  margin-left: 60px;           // same left inset as the summary
+  justify-content: flex-end;
+  width: auto !important;
+  max-width: 600px;
+  margin-left: 60px;
   margin-right: 0;
 
   .button.button-primary.add-to-cart-button {
@@ -105,10 +105,58 @@ body.xmpie-theme .product-instance .right .add-to-cart-button-wrapper {
     background-color: #0f2547;
   }
 }
+
 // McFaddin: align Save to draft under the Add to Cart button
 body.xmpie-theme .product-instance .right .product-instance-save-to-draft-wrapper {
-  justify-content: flex-end;   // was center — now lines up with Add to Cart
-  max-width: 600px;
-  margin-left: 60px;
-  margin-right: 0;
+  justify-content: flex-end;
+}
+
+// McFaddin: right-align the whole product detail panel (dynamic + static)
+body.xmpie-theme .product-instance .right {
+  .total-price {
+    justify-content: flex-end;
+    font-size: var(--text-size-h4);
+    min-height: 0;
+  }
+
+  .product-details .product-name { margin-bottom: 10px; }
+  .mcf-unit-suffix {
+    margin-left: 5px;
+    font-size: var(--text-size-regular);
+    color: var(--text-color-medium);
+    text-transform: lowercase;
+  }
+
+  .product-description { text-align: right; }
+
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .quantity-input {
+    width: 80px;
+    text-align: center;
+  }
+
+  .quantity-label { display: none; }
+  .quantity-units { display: none !important; }
+  .quantity::after {
+    content: 'QTY';
+    font-family: var(--font-family-condensed);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: var(--text-size-label);
+    color: var(--text-color-medium);
+  }
+
+  .product-instance-price { margin-bottom: 14px; }
+
+  .summary-header { text-align: right; }
+  .product-order-summary .summary-table { margin-left: auto; }
+
+  .price-display:has(+ .price-top-marker) { display: none; }
 }
