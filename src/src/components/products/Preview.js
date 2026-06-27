@@ -78,8 +78,14 @@ const Preview = ({
   }
 
   const getThumbnailTitleWrapper = () => {
-    const titleShouldAppear = images[activeImage]?.DisplayName && images[activeImage]?.DisplayName?.trim().length > 0
     const getTitle = (value) => <div className="thumbnail-title-wrapper">{value}</div>
+
+    // McFaddin: relabel the document's "Page 1/Page 2" as Front/Back side
+    const name = images[activeImage]?.DisplayName?.trim()
+    if (name === 'Page 1') return getTitle('Front Side')
+    if (name === 'Page 2') return getTitle('Back Side')
+
+    const titleShouldAppear = name && name.length > 0
     if (titleShouldAppear) {
       return getTitle(images[activeImage].DisplayName)
     }
@@ -88,7 +94,6 @@ const Preview = ({
     }
     return null
   }
-
     const wrapperClass = ['preview-wrapper',
     product?.Type === productTypes.STATIC ? isMultiThumbnails() ? 'multi-static' : 'single-static' : '',
     product?.Type === productTypes.KIT ? 'kit' : '',

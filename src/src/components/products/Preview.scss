@@ -411,64 +411,25 @@ $preview-height-btn-view-proof: 45px;
     }
   }
 }
-/* ===== McFaddin: dynamic preview — stable size across refresh (single + multi) ===== */
+/* ===== McFaddin: dynamic preview — box hugs the (correct) proof ===== */
 .preview-wrapper.single-dynamic,
 .preview-wrapper.multi-dynamic {
   min-height: 0;
 
-  .thumbs-wrapper ul.thumbs { justify-content: center; }   /* center the strip under the preview */
-
-  @media (min-width: theme.$md + 1) {
-    .carousel-root { height: auto; max-height: none; }
-
-    .carousel-slider,
-    .slider-wrapper,
-    .slider,
-    .slide,
-    .inner-carousel-image-wrapper,
-    .image-wrapper { height: auto; }
-
-    .image-wrapper { padding: 0; }
-
-    .image-wrapper img {
-      display: block;
-      width: auto;
-      height: 56vh;        /* FIXED -> identical before/after refresh, no jump on the multi->single flip */
-      max-width: 100%;
-      object-fit: contain;
-      margin: 0 auto;      /* center */
-    }
+  .carousel-root,
+  .carousel-slider,
+  .slider-wrapper,
+  .slider,
+  .slide,
+  .inner-carousel-image-wrapper,
+  .image-wrapper {
+    height: auto !important;
+    max-height: none !important;
   }
-}
 
-/* ===== McFaddin: dynamic preview — mobile ===== */
-@media (max-width: theme.$md) {
-  .preview-wrapper.single-dynamic,
-  .preview-wrapper.multi-dynamic {
-    .preview-area-wrapper { min-height: 0; }
+  .image-wrapper { padding: 0.25in !important; }
+  .inner-carousel-image-wrapper { align-items: center !important; }
 
-    .carousel-root,
-    .carousel-slider,
-    .slider-wrapper,
-    .slider,
-    .slide,
-    .inner-carousel-image-wrapper,
-    .image-wrapper { height: auto; max-height: none; }
-
-    .image-wrapper { padding: 0; }
-
-    .image-wrapper img {
-      display: block;
-      width: auto;
-      height: 42vh;
-      max-width: 100%;
-      object-fit: contain;
-      margin: 0 auto;
-    }
-  }
-}
-/* ===== McFaddin: center the dynamic thumbnail strip ===== */
-.preview-wrapper.single-dynamic .multi-carousel,
-.preview-wrapper.multi-dynamic .multi-carousel {
-  justify-content: center;
+  .thumbs-wrapper ul.thumbs,
+  .multi-carousel { justify-content: center; }
 }
