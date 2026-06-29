@@ -1,10 +1,10 @@
 @use '_theme.scss';
 
 .slider {
-  --content-xl: '{`items`: 6}';
-  --content-lg: '{`items`: 6}';
-  --content-md: '{`items`: 5.5}';
-  --content-sm: '{`items`: 4.5}';
+  --content-xl: '{`items`: 5}';
+  --content-lg: '{`items`: 5}';
+  --content-md: '{`items`: 4.5}';
+  --content-sm: '{`items`: 3.5}';
   --content-xs: '{`items`: 2.5}';
 }
 
@@ -113,26 +113,27 @@
 }
 
 .slider-wrapper-multi {
+  position: relative;
   overflow: hidden;
   margin: 0 auto;
   padding-top: 2px;
 
   .arrows {
     width: 30px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    cursor: pointer;
   }
 
   .left-btn {
-    position: relative;
-    left: 20px;
-    bottom: 185px;
-    transform: scaleX(-1);
-    cursor: pointer;
+    left: 8px;
+    transform: translateY(-50%) scaleX(-1);
   }
 
   .right-btn {
-    position: relative;
-    bottom: calc(185px + 30px);
-    cursor: pointer;
+    /* horizontal position (left) is set inline by Slider.js */
+    transform: translateY(-50%);
   }
 
   .slider {
@@ -144,6 +145,7 @@
       flex-grow: 0;
       flex-shrink: 0;
       overflow: hidden;
+      box-sizing: border-box;
     }
   }
 
@@ -155,6 +157,7 @@
     .slider {
       & > * {
         padding: 0px 7.5px;
+        width: 232px;
       }
 
       &:after {
@@ -172,6 +175,7 @@
     .slider {
       & > * {
         padding: 0px 7.5px;
+        width: 232px;
       }
 
       &:after {
@@ -191,20 +195,13 @@
     .slider {
       & > * {
         padding: 0px 5px;
+        width: 161px;
       }
 
       &:after {
         display: none;
         content: var(--content-md);
       }
-    }
-
-    .left-btn {
-      bottom: 155px;
-    }
-
-    .right-btn {
-      bottom: calc(155px + 30px);
     }
 
     .arrows {
@@ -218,14 +215,15 @@
     .slider {
       & > * {
         padding: 0px 5px;
+        width: 153px;
       }
-      
+
       &:after {
         display: none;
         content: var(--content-sm);
       }
     }
-    
+
     .arrows {
       opacity: 0;
     }
@@ -237,14 +235,15 @@
     .slider {
       & > * {
         padding: 0px 5px;
+        width: 120px;
       }
-      
+
       &:after {
         display: none;
         content: var(--content-xs);
       }
     }
-    
+
     .arrows {
       opacity: 0;
     }
@@ -252,18 +251,19 @@
 
   @media (max-width: theme.$xs) {
     width: 300px;
-    
+
     .slider {
       & > * {
         padding: 0px 5px;
+        width: 120px;
       }
-      
+
       &:after {
         display: none;
         content: var(--content-xs);
       }
     }
-    
+
     .arrows {
       opacity: 0;
     }

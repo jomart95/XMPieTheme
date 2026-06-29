@@ -1,43 +1,67 @@
 @use "_theme.scss";
 
-/* MCF base — dark rounded category card.
-   NOTE: written from CategoryItem.js markup + the design; the ORIGINAL CategoryItem.scss
-   was not reviewed. If your current file has responsive image-height breakpoints (like
-   ProductItem does), merge those in rather than replacing wholesale. */
+/* MCF base — navy category tile with a circular badge.
+
+   Structure (CategoryItem.js):
+     .category-item   = the slider track item; TRANSPARENT, carries the inter-tile
+                        gutter (padding comes from Slider.scss). No navy here, or the
+                        navy fills the gutter and the tiles butt into a band again.
+     .category-tile   = the visible NAVY rounded tile (padding = breathing room).
+     .image-wrapper   = square box clipped to a circle (border-radius:50%).
+
+   Badge images on the asset server are transparent PNGs; a few legacy ones still
+   carry a white/grey square. The circular clip cuts those square corners away, so
+   EITHER kind renders as a clean circle on navy. */
 
 .category-item {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface-dark-color);
-  border-radius: 14px;
-  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
   text-decoration: none;
-  transition: transform 0.15s ease;
 
   &:hover {
     text-decoration: none;
-    transform: translateY(-3px);
+
+    .category-tile {
+      transform: translateY(-3px);
+    }
+  }
+
+  .category-tile {
+    box-sizing: border-box;
+    background: var(--surface-dark-color);   /* navy */
+    border-radius: 25px;
+    padding: 9px;
+    transition: transform 0.15s ease;
   }
 
   .image-wrapper {
-    background: var(--image-box-background-color);
-    height: var(--category-image-height);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: transparent;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
   }
 
+  /* Name is baked into the badge image. Keep it in the DOM as the link's accessible
+     label (the <img> alt is intentionally empty) but hide it visually so it isn't
+     duplicated under the circle. */
   .category-name {
-    padding: 14px 16px;
-    font-family: var(--font-family-condensed, var(--font-family));
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-size: var(--text-size-h4);
-    line-height: 1.15;
-    color: var(--text-color-on-highlight-bg);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
   }
 }

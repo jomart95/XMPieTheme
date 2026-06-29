@@ -1,0 +1,72 @@
+/**
+ * KitItemProperties — inline VDP fields on a kit item row (Option B).
+ * Scopes DynamicForm's controls into the kit card and applies McFaddin tokens.
+ */
+
+.kit-item-properties {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border, #e3e3e3);
+
+  &.is-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+  }
+
+  // DynamicForm renders .duc-wrapper per property; tighten spacing for the row context.
+  .duc-wrapper {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .duc-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .duc-title {
+    font-family: var(--font-condensed, 'Roboto Condensed', sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text, #1c1c1c);
+
+    .required-field {
+      color: var(--color-highlight, #6a1b9a);
+      margin-left: 2px;
+    }
+  }
+
+  // Native inputs the DUC widgets emit.
+  input[type='text'],
+  input[type='number'],
+  textarea,
+  select {
+    border-radius: var(--form-input-border-radius, 8px);
+    border: 1px solid var(--color-border, #cfcfcf);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-highlight, #6a1b9a);
+      box-shadow: 0 0 0 2px rgba(106, 27, 154, 0.15);
+    }
+  }
+
+  .duc-error .error-text {
+    color: var(--color-error, #c62828);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}

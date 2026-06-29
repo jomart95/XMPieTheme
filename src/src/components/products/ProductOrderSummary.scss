@@ -76,9 +76,12 @@
 body.xmpie-theme .product-instance .right .add-to-cart-button-wrapper {
   display: flex;
   justify-content: flex-end;
-  width: auto !important;
-  max-width: 600px;
-  margin-left: 60px;
+  width: 100% !important;
+  /* DIAL: cap the button to the content's width so its right edge meets the
+     summary edge. This is window-size stable (unlike a fixed padding) because
+     the content is a fixed max-width in a fluid column. Nudge to taste. */
+  max-width: 665px;
+  margin-left: 0;
   margin-right: 0;
 
   .button.button-primary.add-to-cart-button {
@@ -114,7 +117,7 @@ body.xmpie-theme .product-instance .right .product-instance-save-to-draft-wrappe
 // McFaddin: right-align the whole product detail panel (dynamic + static)
 body.xmpie-theme .product-instance .right {
   .total-price {
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-size: var(--text-size-h4);
     min-height: 0;
   }
@@ -127,36 +130,61 @@ body.xmpie-theme .product-instance .right {
     text-transform: lowercase;
   }
 
-  .product-description { text-align: right; }
+  .product-description { text-align: left; }
 
   .quantity {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
     gap: 10px;
   }
 
+  // stack "(NN Items/Pack)" directly under the box, right-aligned, tight
+  .product-quantity-component {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+
+  .pack-description {
+    text-align: right;
+    line-height: 1.1;
+    font-size: var(--text-size-label);
+    color: var(--text-color-medium);
+  }
+
   .quantity-input {
-    width: 80px;
+    width: 48px;
     text-align: center;
   }
 
   .quantity-label { display: none; }
   .quantity-units { display: none !important; }
-  .quantity::after {
+  // QTY label anchored to the bottom-left corner of the input box, small
+  .product-quantity-component .product-quantity {
+    position: relative;
+  }
+  .product-quantity-component .product-quantity::before {
     content: 'QTY';
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    margin-right: 6px;
+    line-height: 1;
+    white-space: nowrap;
     font-family: var(--font-family-condensed);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-size: var(--text-size-label);
+    font-size: 10px;
     color: var(--text-color-medium);
   }
 
   .product-instance-price { margin-bottom: 14px; }
 
-  .summary-header { text-align: right; }
-  .product-order-summary .summary-table { margin-left: auto; }
+  .summary-header { text-align: left; }
+  .product-order-summary .summary-table { width: 100%; margin-left: 0; }
 
   .price-display:has(+ .price-top-marker) { display: none; }
 }

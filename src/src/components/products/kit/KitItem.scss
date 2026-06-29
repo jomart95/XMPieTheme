@@ -31,6 +31,8 @@
     flex-direction: row;
     align-items: center;
     border: 1px solid #d6d6d6;
+    border-radius: 15px;
+    overflow: hidden;
     position: relative;
 
     @media (max-width: theme.$md) and (min-width: theme.$sm) {
@@ -43,6 +45,11 @@
 
     &.excluded .item-name-price-quantity {
       background-color: #f1f1f3;
+    }
+
+    /* MCF: added/included items read as a solid-purple "in your kit" state */
+    &:not(.excluded) {
+      box-shadow: inset 5px 0 0 0 var(--color-highlight);
     }
 
     .item-image {
@@ -66,9 +73,23 @@
 
     .add-btn {
       min-width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;   /* MCF: center the button in its right-hand slot */
 
-      .button-secondary {
+      /* MCF: purple outline at rest, FLIP to solid deep-purple + white text on hover */
+      .btn.button-secondary {
         min-width: 117px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: var(--color-highlight);
+          border-color: var(--color-highlight);
+          color: #fff;
+          box-shadow: none;
+        }
       }
 
       @media (max-width: theme.$sm) {
@@ -332,14 +353,20 @@
     }
 
     .remove-btn {
-      padding: 10px 10px 0 0;
       position: absolute;
-      top: 0;
-      right: 0;
-      font-size: 24px;
-      line-height: 20px;
+      top: 10px;
+      right: 10px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: var(--color-highlight);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1;
       cursor: pointer;
-      color: var(--text-color-medium);
     }
 
     .out-of-stock {

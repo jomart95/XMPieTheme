@@ -21,11 +21,13 @@ const CategoryItem = ({ model, url, className, ...restProps }) => {
 
   return (
     <LinkAria to={url} className={`category-item ${className || ''}`} data-qaautomationinfo={model.FriendlyID} {...restProps}>
-      <div className="image-wrapper">
-        <img alt='' src={imageUrl} />
-      </div>
-      <div className="category-name">
-        <HTMLLinesEllipsis style={{ whiteSpace: 'pre-wrap' }} unsafeHTML={model.Name} maxLine={2} basedOn='words' />
+      <div className="category-tile">
+        <div className="image-wrapper">
+          <img alt='' src={imageUrl} />
+        </div>
+        <div className="category-name">
+          <HTMLLinesEllipsis style={{ whiteSpace: 'pre-wrap' }} unsafeHTML={model.Name} maxLine={2} basedOn='words' />
+        </div>
       </div>
     </LinkAria>
   )

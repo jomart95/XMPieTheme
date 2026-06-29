@@ -22,10 +22,15 @@
   }
 
   .title{
+    font-family: var(--font-family-condensed, var(--font-family));
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     font-size: var(--text-size-h2);
+    line-height: 1.05;
     color: var(--text-color-heading);
     margin: auto;
-    padding-top: 30px;
+    padding-top: 60px;
     text-align: center;
   }
 
@@ -92,7 +97,15 @@
       padding: 40px 0;
     }
   }
+
+  // MCF: condensed-uppercase treatment for the gallery count line
+  // ("N featured products"), scoped to the category page so the shared
+  // ScrollableGallery used on home/search is untouched.
+  .gallery .top .main-title.scrollable-title {
+    font-family: var(--font-family-condensed, var(--font-family));
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-color-heading);
+  }
 }
-
-
-

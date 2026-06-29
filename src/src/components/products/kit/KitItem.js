@@ -29,6 +29,7 @@ import theme from '$styles/theme'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap-wc'
 import { Scrollbars } from 'react-custom-scrollbars-2'
 import { kitChangeType } from './consts'
+import KitItemProperties from './KitItemProperties'
 import './KitItem.scss'
 
 class KitItem extends Component {
@@ -52,6 +53,7 @@ class KitItem extends Component {
     this.onAdd = this.onAdd.bind(this)
     this.onModalCarouselChange = this.onModalCarouselChange.bind(this)
     this.onResizeHandler = this.onResizeHandler.bind(this)
+    this.onInlinePropertiesValidityChange = this.onInlinePropertiesValidityChange.bind(this)
 
     this.state = {
       isPropertiesOpen: false,
@@ -276,6 +278,11 @@ class KitItem extends Component {
     this.setKitViewModel(ID, { iframeLoaded: null, isPropertiesValid: null })
   }
 
+  onInlinePropertiesValidityChange(orderItemID, isValid) {
+    // Replaces the iframe @PRODUCT_PROPERTIES_STATUS signal: native fields report their own validity.
+    this.setKitViewModel(orderItemID, { isPropertiesValid: !!isValid, propsWasOpened: true })
+  }
+
   togglePreviewModal() {
     const { kitItemOrderItemModel: { ID } } = this.props
     this.setState({ isPreviewOpen: !this.state.isPreviewOpen })
@@ -404,6 +411,12 @@ class KitItem extends Component {
           {IsIncluded && <div className="remove-btn" onClick={this.onRemove}>×</div>}
 
         </div>
+        {IsIncluded && hasProperties && (
+          <KitItemProperties
+            orderItemID={kitItemOrderItemModel.ID}
+            onValidityChange={this.onInlinePropertiesValidityChange}
+          />
+        )}
         <Modal isOpen={this.state.isPropertiesOpen} modalClassName="kit-item-properties-modal" onOpened={this.propertiesModalOnOpened}>
           <ModalHeader><div dangerouslySetInnerHTML={{__html: `${t('KitItem.Edit_options')} - ${Name}`}}/><div className='modal-close'><div className='close-btn' onClick={this.onClickCancel}>×</div></div></ModalHeader>
           <ModalBody>
