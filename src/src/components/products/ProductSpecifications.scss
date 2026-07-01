@@ -52,7 +52,11 @@ body.xmpie-theme .product-layout .main-wrapper {
   body.xmpie-theme .product-instance .right {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - var(--header-height-desktop) - 60px);
+    /* McFaddin: DISABLED — this min-height inflated the right column to ~viewport
+       height (1134px), which over-extended the grey preview rail past the actual
+       content and pushed the upsell out of view. Uncomment to restore the tall
+       column / "specs dropped to the bottom" layout. */
+    /* min-height: calc(100vh - var(--header-height-desktop) - 60px); */
   }
 
   body.xmpie-theme .product-instance .right .mcf-product-specs {
