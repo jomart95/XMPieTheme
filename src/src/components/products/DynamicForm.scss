@@ -309,3 +309,11 @@ body.xmpie-theme .main-wrapper.dynamic .duc-wrapper {
   body.xmpie-theme .main-wrapper.dynamic .right .add-to-cart-button-wrapper {
     margin-top: 40px !important;
   }
+/* McFaddin: left gutter on the dynamic right column so its content isn't tight
+   against the left/preview column. Right-edge alignment (button/summary) is
+   unaffected -- padding-left only shifts content off the left divider.
+   >>> DIAL: nudge padding-left to taste (40px is a comfortable starting gutter). */
+body.xmpie-theme .main-wrapper.dynamic .right {
+  padding-left: 40px;
+  box-sizing: border-box;
+}

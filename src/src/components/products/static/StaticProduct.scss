@@ -702,3 +702,14 @@
     display: none;
   }
 }
+/* McFaddin: static per-unit price ($X / pack) — smaller and snug under the
+   description. Scoped to .main-wrapper.static so the dynamic tag page and the
+   summary Total (both also .total-price) are unaffected.
+   >>> DIAL: font-size and margin-top are the two knobs. */
+body.xmpie-theme .main-wrapper.static .product-instance-price {
+  margin-top: -14px;                 /* pull the price up under the description */
+}
+body.xmpie-theme .main-wrapper.static .product-instance-price .total-price {
+  font-size: var(--text-size-h4);    /* was h2 (30px) -> h4, ~22px */
+  min-height: 0;
+}
