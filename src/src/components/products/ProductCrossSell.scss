@@ -15,18 +15,52 @@
     margin: 0 0 24px;
   }
 
-  .mcf-cross-sell-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    align-items: start;   /* each card wraps its own content; no stretch to tallest */
+  .mcf-cross-sell-carousel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-    @media (max-width: 900px) {
-      grid-template-columns: repeat(2, 1fr);
+  .mcf-cross-sell-arrow {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: opacity .15s ease;
+
+    svg { width: 20px; height: 40px; display: block; }
+
+    &.is-hidden {
+      visibility: hidden;
+      pointer-events: none;
     }
   }
 
+  .mcf-cross-sell-track {
+    flex: 1 1 auto;
+    min-width: 0;                 /* lets the flex child shrink so it can scroll */
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: auto;        /* arrow scrolls are animated in JS */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 14px 2px 22px;       /* room for the card hover lift + shadow */
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
   .mcf-cross-sell-card {
+    flex: 0 0 var(--mcf-cs-card-width, 240px);
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -117,6 +151,26 @@
     &:hover { background: #1e3a5f; }
     &:disabled,
     &[disabled] { opacity: .6; cursor: default; }
+  }
+
+  .mcf-cross-sell-customize {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    background: var(--surface-dark-color, #0f2547);
+    color: #fff;
+    font-family: var(--font-family-condensed, 'Roboto Condensed', sans-serif);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 11px 16px;
+    border-radius: var(--button-border-radius);
+    transition: background .15s ease;
+
+    &:hover { background: #1e3a5f; }
   }
 
   .mcf-cross-sell-success {
