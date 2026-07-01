@@ -1,874 +1,202 @@
-@use "_theme.scss";
-
-.preview {
-
-  @media (max-width: theme.$md) {
-    .product-instance .right .main-carousel-wrapper img {
-      max-height: calc(480px * 0.45) !important;
-    }
-
-    .product-instance .right .main-carousel-wrapper .image-loader.image {
-      height: calc(480px * 0.45) !important;
-    }
-
-    .modal.proof-approval .modal-content .modal-body .approval-image-wrapper.mobile img {
-      height: 100%;
-    }
-
-    .modal.proof-approval .modal-content .modal-body .approval-image-wrapper.mobile {
-      max-height: calc(480px - 260px);
-    }
-  }
-}
-
-// connect NG Store
-.connect .product-instance .right .loading-content-container {
-  top: 0;
-}
-
-@media (max-width: theme.$lg) and (min-width: theme.$md) {
-  .connect .product-instance .right .product-details {
-    padding-top: 60px;
-  }
-
-  .connect .product-instance.product-layout .main-wrapper .main-carousel-wrapper {
-    margin-top: 60px;
-  }
-
-  .connect .product-instance.product-layout .main-wrapper .left {
-    margin-top: 0;
-  }
-}
-
-.product-instance {
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-
-  .price-top-marker {
-    height: 20px;
-    position: absolute;
-    width: 10px;
-    z-index: 2;
-    margin-top: -40px;
-    min-width: 10px !important;
-    @media (min-width: theme.$md) {
-      margin-top: calc(-70px - var(--header-height-desktop));
-    }
-    @media (min-width: theme.$sm) and (max-width: theme.$md) {
-      margin-top: -70px;
-    }
-  }
-
-  .easy-upload-price-top-marker {
-    min-width: 10px !important;
-    width: 10px;
-    height: 20px;
-    position: absolute;
-    z-index: 2;
-    margin-top: -130px;
-  }
-
-  .price-bottom-marker {
-    position: relative;
-    bottom: 80px;
-    height: 20px;
-    max-width: 10px !important;
-  }
-
-  &.product-layout {
-    .main-wrapper {
-      position: relative;
-
-      .left {
-        padding: 0;
-        margin: 0 60px;
-
-        @media (min-width: theme.$md) and (max-width: theme.$lg) {
-          margin: 0 30px;
-        }
-
-        .main-carousel-wrapper .image-carousel-wrapper .image-wrapper .image img {
-          object-fit: unset;
-        }
-
-        .image-carousel-wrapper {
-          height: calc(100vh - 270px - var(--header-height-desktop));
-          min-height: 100px;
-
-          @media (min-width: theme.$md) and (max-width: theme.$lg) {
-            height: calc(100vh - 270px - var(--search-height) - 50px);
-          }
-        }
-
-        @media (min-width: theme.$lg + 1) {
-          padding-top: 60px;
-        }
-
-        @media (min-width: theme.$md) and (max-width: theme.$lg) {
-          padding-top: 30px;
-        }
-
-        @media (width < theme.$md + 1) {
-          margin: initial;
-          position: static;
-        }
-      }
-
-      .preview-thumbnail-title {
-        @media (max-width: theme.$md) {
-          position: relative;
-        }
-      }
-
-      .view-proof-wrapper {
-        color: var(--text-color-ultra-dark);
-        font-size: var(--text-size-label);
-        width: 80%;
-        margin-top: 15px;
-        display: flex;
-
-        .view-proof {
-          cursor: pointer;
-          margin-right: auto;
-
-          .view-proof-icon {
-            margin-right: 8px;
-
-            path {
-              fill: var(--color-icon);
-            }
-          }
-
-          div {
-            display: inline-block;
-          }
-
-          @media (max-width: theme.$md) {
-            .view-proof-title {
-              display: none;
-            }
-          }
-        }
-
-        @media (max-width: theme.$md) {
-          margin-left: 20px;
-          width: 30px;
-          position: absolute;
-          margin-top: 10px;
-          top: -5px;
-
-          .view-proof-title {
-            display: none;
-          }
-        }
-      }
-
-      .proof-preview-failure {
-        position: absolute;
-        left: calc(50% - min(130px, 50%));
-        top: 50%;
-        transform: translateY(-50%);
-
-        @media (max-width: theme.$md) {
-          left: calc(50% - 130px);
-        }
-      }
-
-      .main-carousel-wrapper {
-        @media (min-width: theme.$md) {
-          height: auto;
-        }
-
-        @media (min-width: theme.$md) and (max-width: theme.$lg) {
-          margin-top: calc(var(--search-height) + 50px);
-        }
-      }
-
-      &.dynamic {
-        @media (min-width: theme.$lg + 1) {
-          grid-template-columns: minmax(60%, 1fr) clamp(0px, 720px, 40%);
-        }
-
-        @media (min-width: theme.$md) and (max-width: theme.$lg) {
-          grid-template-columns: 40% 60%;
-        }
-
-        @media (max-width: theme.$md) {
-          .preview-area-wrapper {
-            min-height: var(--product-preview-area-height);
-          }
-        }
-
-        .left-container {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          align-items: center;
-          align-content: space-between;
-          width: 100%;
-          padding-bottom: 60px;
-          overflow: hidden;
-          height: calc(100vh - var(--header-height-desktop) - 60px);
-          position: relative;
-
-          @media (min-width: theme.$md) and (max-width: theme.$lg) {
-            height: calc(100vh - var(--header-height-mobile) - var(--search-height) - 60px);
-            padding-bottom: 60px;
-          }
-        }
-
-        .refresh-preview {
-          width: 100%;
-          max-width: 240px;
-
-          @media (max-width: theme.$md) {
-            max-width: unset;
-            width: calc(100% - 40px);
-            margin: 12px 20px 0 20px;
-            display: block;
-          }
-
-          &[disabled] {
-            color: var(--text-color-disabled);
-            background-color: var(--color-button-disabled);
-          }
-        }
-
-        .main-carousel-wrapper {
-
-          @media (min-width: theme.$md) {
-            height: calc(100% - 60px);
-          }
-
-          .image-carousel-wrapper {
-            height: auto;
-
-            .image-wrapper .image img {
-              max-height: 100%;
-              position: absolute;
-              transform: translate(-50%, -50%);
-              left: 50%;
-              top: 50%;
-            }
-
-          }
-
-          @media (min-width: theme.$md) {
-            margin-top: 0;
-          }
-
-          .thumbnail-title-wrapper {
-            margin: 10px auto 0;
-            color: var(--text-color-dark);
-            font-size: var(--text-size-regular);
-
-            @media (max-width: theme.$md) {
-              display: inherit;
-              margin: 5px auto 0;
-            }
-
-            @media (max-width: theme.$xs) {
-              display: inherit;
-              color: var(--text-color-dark);
-              font-size: var(--text-size-regular);
-              margin: 5px auto 8px;
-            }
-          }
-
-          .dot-carousel {
-            margin-bottom: 20px;
-
-            @media (max-width: theme.$xs) {
-              margin: 0 auto 0;
-            }
-            @media (max-width: theme.$md) {
-              margin-top: 8px;
-              margin-bottom: 30px;
-            }
-          }
-        }
-
-        right {
-          & > div {
-            min-width: 280px;
-
-            @media (min-width: theme.$lg) {
-              max-width: 720px;
-            }
-          }
-
-
-          .image-carousel-mobile {
-            position: relative;
-
-            .carousel-dots-loader {
-              top: calc(50% - 60px);
-              left: calc(50% - 50px);
-            }
-
-            .proof-preview-failure {
-              left: 50%;
-              top: calc(50% - 30px);
-              transform: translate(-50%, -50%);
-            }
-          }
-
-        }
-
-        .view-proof-wrapper {
-          display: none;
-        }
-
-        .popper-tooltip {
-          &.error {
-            .close-popper {
-              display: none;
-            }
-          }
-        }
-      }
-
-      .popover-message {
-        line-height: 1.2;
-        text-align: initial;
-      }
-    }
-
-
-    .static {
-      .right {
-        iframe {
-          height: 100px;
-          width: 600px;
-          @media (max-width: theme.$md) {
-            width: 100%;
-          }
-        }
-
-        .block {
-          @media (min-width: theme.$lg) {
-            width: 600px;
-          }
-        }
-      }
-    }
-
-    .dynamic {
-      .right {
-        .add-to-cart-button-wrapper {
-          width: unset;
-          margin-left: 60px;
-          margin-right: 60px;
-
-          @media (max-width: theme.$md) {
-            margin-left: 20px;
-            margin-right: 20px;
-          }
-          @media (min-width: theme.$md) and (max-width: theme.$lg) {
-            margin-left: 30px;
-            margin-right: 30px;
-            max-width: 600px;
-          }
-        }
-
-        .add-to-cart-button {
-          width: 100%;
-          margin-left: 0;
-          margin-right: 0;
-        }
-
-      }
-
-      .left {
-        @media (min-width: theme.$lg + 1) {
-          padding-top: 60px;
-        }
-      }
-    }
-
-    .static {
-
-      .left-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        min-width: 100%;
-        height: 100%;
-        max-height: 100%;
-
-        .main-carousel-wrapper {
-          margin-top: 0;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-
-          .image-carousel-wrapper {
-            height: 100%;
-          }
-        }
+@use '_theme.scss';
+
+.product-instance-properties {
+  .section {
+    border: 1px solid var(--color-line);
+    border-left: 2px solid var(--text-color-medium);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+
+    &.section-open {
+      border-left: 2px solid var(--color-highlight);
+
+      .section-content {
+        padding-top: 15px;
+        max-height: var(--openSection);
       }
 
     }
 
-    .uedit {
-      @media (min-width: theme.$md + 1) {
-        width: 100%;
-        display: flex;
-      }
-      .left {
-        flex: 1 1 calc(60% - 60px);
-        min-width: calc(60% - 60PX);
-        @media (max-width: theme.$lg) {
-          min-width: 40%;
-        }
-        @media (min-width: theme.$md) {
-          padding-top: 30px;
-        }
-        @media (min-width: theme.$lg + 1) {
-          min-width: calc(60% - 120px);
-          padding: 40px 0;
-        }
-        @media (min-width: theme.$xl + 1) {
-          padding: 60px 0;
-        }
-        @media (width < theme.$md + 1) {
-          height: fit-content;
-        }
-      }
-      .right {
-        max-width: 720px;
-        @media (max-width: theme.$lg) {
-          min-width: 386px;
-          width: 40%;
-          .product-instance.product-details {
-            margin: 0 30px;
-
-          }
-          .product-instance-price {
-            margin: 0 30px 30px;
-          }
-          .product-instance-wizard {
-            margin: 0 30px;
-          }
-          .static-order-summary.product-order-summary {
-            margin: 30px 30px 0;
-          }
-        }
-        @media (min-width: theme.$lg + 1) {
-          min-width: 40%;
-          max-width: 720px;
-          padding-top: 40px;
-          .product-instance.product-details {
-            margin: 0 40px;
-            padding-top: 0;
-          }
-          .product-instance-price {
-            margin: 0 40px 30px;
-          }
-          .product-instance-wizard {
-            margin: 0 40px;
-          }
-          .static-order-summary.product-order-summary {
-            margin: 30px 40px 0;
-          }
-        }
-        @media (min-width: theme.$xl + 1) {
-          min-width: 380px;
-          width: 40%;
-          padding-top: 60px;
-          .product-instance.product-details {
-            margin: 0 60px;
-          }
-          .product-instance-price {
-            margin: 0 60px 30px;
-          }
-          .product-instance-wizard {
-            margin: 0 60px;
-          }
-          .static-order-summary.product-order-summary {
-            margin: 30px 60px 0;
-          }
-        }
-        @media (max-width: theme.$md) {
-          min-width: initial;
-          max-width: 100%;
-          width: 100%;
-          .product-instance.product-details {
-            margin: 0px 20px;
-          }
-        }
-      }
+    &:not(:nth-child(2)) {
+      margin-top: 30px;
     }
 
-  }
-
-  .right {
-    padding-top: 30px;
-
-    .hidden {
+    & .hidden {
       display: none;
     }
+  }
+  .section:not(.section-open) {
 
-    @media (min-width: theme.$md) and (max-width: theme.$lg) {
-      height: 100%;
-      min-height: calc(100vh - var(--header-height-mobile));
-    }
+    .section-header {
+      color: var(--text-color-ultra-dark);
 
-    .main-carousel-wrapper img {
-      max-height: 45vh !important;
-    }
-
-    @media (min-width: theme.$md) {
-      .main-carousel-wrapper .image {
-        height: 45vh;
-      }
-
-    }
-
-    .loading-content-container {
-      position: absolute;
-      top: var(--header-height-desktop);
-      right: 0;
-      width: 60vw;
-      height: calc(100vh - var(--header-height-desktop));
-      background-color: rgba(255, 255, 255, 0.8);
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      @media (max-width: theme.$md) {
-        width: 100vw;
-      }
-
-      .loading-dots {
-        transform: scale(1.2, 1.2);
-        display: block;
-        margin: auto;
-        height: 14px;
-
-        > div {
-          background: var(--color-highlight);
-        }
-      }
-    }
-
-    .block {
-      margin-left: 60px;
-      margin-right: 60px;
-
-      @media (max-width: theme.$md) {
-        margin-left: 20px;
+      .section-title {
         margin-right: 20px;
       }
-
-      @media (min-width: theme.$md) and (max-width: theme.$lg) {
-        margin-left: 30px;
-        margin-right: 30px;
-      }
-    }
-
-    .product-details {
-      @extend .block;
-
-      @media (min-width: theme.$md) and (max-width: theme.$lg) {
-        padding-bottom: 0;
-        padding-top: 0;
-      }
-
-      @media (max-width: theme.$md) {
-        padding-bottom: 0;
-      }
-
-      .product-name {
-        margin-bottom: 30px;
-        color: var(--color-highlight);
-      }
-
-      .product-description {
-        line-height: 19px;
-        margin: 0;
-      }
-    }
-
-    .product-reorder {
-      margin-bottom: 30px;
-    }
-
-    .product-instance-price {
-      position: relative;
-      margin-bottom: 30px;
-      @extend .block;
-    }
-
-    .price-wrapper {
-      display: inline;
-    }
-
-    .total-price {
-      font-size: var(--text-size-h2);
-      color: var(--text-color-ultra-dark);
-      display: flex;
-      align-items: center;
-      min-height: 45px;
-
-      @media (max-width: theme.$md) {
-        line-height: var(--text-size-h2);
-      }
-
-      @media (width < theme.$sm + 1) {
-        font-size: var(--text-size-h4);
-      }
-
-      .minimum-price-notation {
-        font-size: var(--text-size-regular);
-        margin-right: 5px;
-      }
-
-      .price-currency {
-        font-size: var(--text-size-h4);
-
-        @media (width < theme.$sm + 1) {
-          font-size: var(--text-size-label);
-        }
-      }
-
-      .loading-dots {
-        height: 10px;
-
-        .loading-dot {
-          background: var(--color-highlight);
-        }
-      }
-    }
-
-    .view-proof-button {
-      @extend .block;
-
-      margin-top: 12px;
-      margin-bottom: 30px;
-    }
-
-    .product-instance-wizard {
-      @extend .block;
-
-      .product-instance-properties {
-        .quantity-label {
-          color: var(--text-color-dark);
-        }
-
-        .product-quantity-component {
-          color: var(--color-line);
-          margin-bottom: 0;
-          margin-right: 8px;
-
-          .quantity-input {
-            padding: 12px 15px;
-            height: 38px;
-          }
-        }
-      }
-    }
-
-    .static-delivery-method {
-      @extend .block;
-      margin-bottom: 30px;
-      margin-top: 30px;
-    }
-
-    .static-order-summary {
-      @extend .block;
-
-      margin-bottom: 30px;
-      margin-top: 30px;
-      max-width: 600px;
-
-
-      @media (max-width: theme.$md) {
-        width: calc(100% - 40px);
-      }
-
-      .summary-table {
-        width: 100%;
-      }
-    }
-
-    .add-to-cart-button-wrapper {
-      max-width: 600px;
-      position: relative;
-      z-index: 1;
-      @media (min-width: theme.$lg) {
-        width: fit-content;
-      }
-      @media (max-width: theme.$lg) {
-        max-width: 100%;
-      }
-    }
-
-    .add-to-cart-button {
-      @extend .block;
-      height: 45px;
-
-      @media (min-width: theme.$md) and (max-width: theme.$lg) {
-        width: calc(100% - 60px);
-      }
-
-      @media (max-width: theme.$md) {
-        width: calc(100% - 40px);
-      }
-    }
-
-    .product-instance-save-to-draft-wrapper {
-      @extend .block;
-      display: flex;
-      justify-content: center;
-      margin-top: 15px;
-      margin-bottom: 40px;
-
-      @media (max-width: theme.$md) {
-        width: calc(100% - 40px);
-      }
-
-      .product-instance-save-to-draft {
-        font-size: var(--text-size-label);
-      }
-
-      .product-instance-save-to-draft-success {
-        display: flex;
-        justify-content: center;
-        color: var(--color-success);
-        gap: 5px;
-        opacity: 1;
-        font-size: var(--text-size-label);
-        animation: fadeInFadeOut 3s;
-        animation-fill-mode: forwards;
-
-        .product-instance-save-to-draft-success-icon {
-          fill: var(--color-success);
-        }
-      }
-
-    }
-
-    .ng_product_below_add_to_cart {
-      @extend .block;
-      @media (width < theme.$md + 1) {
-        margin-top: 60px;
-        &:empty {
-          margin-top: 0;
-        }
-      }
-    }
-
-    .required-indicator {
-      color: var(--color-error);
     }
   }
-
-  &.ignore-mask-error .mask-error {
-    display: block !important;
-  }
-}
-
-
-.error-popover.popover.show,
-.grey-price-popover.popover.show {
-  font-family: inherit;
-  max-width: 320px;
-  border-radius: 5px;
-
-  @media (min-width: theme.$lg) {
-    max-width: 350px;
-  }
-
-  .popover-close {
-    position: absolute;
-    right: 10px;
-    top: 0;
-    font-size: 20px;
+  .section-header {
     cursor: pointer;
-    color: var(--text-color-medium);
-  }
-
-  .popover-body {
+    color: var(--color-text);
     display: flex;
-    padding: 15px;
+    justify-content: space-between;
+    min-width: 100%;
+  }
+  .section-header > svg {
+    margin-left: 20px;
+    flex-shrink: 0;
+  }
+  .section-open .section-header {
+    color: var(--color-highlight);
+  }
+
+  .section-title {
+    align-items: center;
+    display: flex;
+    font-size: var(--text-size-label);
+
+    .section-title-text {
+      margin-left: 14px;
+      @media (max-width: theme.$md) {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  .section-tick-icon {
+    path:first-of-type {
+      fill: var(--color-success);
+    }
+  }
+
+  .section-pencil-icon {
+    path {
+      fill: var(--color-icon);
+    }
+  }
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    transition: max-height .3s, padding-top 0.3s;
+    overflow: hidden;
+    max-height: 0;
+ }
+
+  .section-error-msg {
+    color: var(--color-error);
+    padding-top: 4px;
+  }
+  .section-description {
+    margin: 25px 0 15px;
     font-size: var(--text-size-regular);
-    border-radius: 5px;
+    color: var(--text-color-dark);
+  }
+}
 
-    .popover-message {
-      max-width: 180px;
+/* ------------------------------------------------------------------ *
+ * McFaddin: single-field dynamic product (e.g. pastry-tag price).
+ * A one-field form takes DynamicForm's no-section branch, which renders
+ * a bare .duc-wrapper OUTSIDE .product-properties, so the canonical duc
+ * styling never reaches it and the field falls back to browser defaults.
+ * Style it here so the price field reads as a clean, intentional control
+ * that aligns with the summary card in the right column.
+ * ------------------------------------------------------------------ */
+.duc-wrapper {
+  width: 100%;
+  margin-bottom: 28px;
+
+  &.hidden { display: none; }
+
+  .duc-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .duc-title {
+      font-size: var(--text-size-label);
       color: var(--text-color-ultra-dark);
+      font-weight: 600;
+      line-height: 1.2;
+
+      .required-field { color: var(--color-error); margin-left: 2px; }
+    }
+
+    .duc-description {
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+
+      .duc-description-text {
+        white-space: pre-wrap;
+        display: none;
+        position: absolute;
+        margin-top: 5px;
+        padding: 10px;
+        max-width: 350px;
+        min-width: 170px;
+        background: var(--color-fill);
+        color: var(--text-color-disabled);
+        text-align: center;
+        border: 1px solid var(--color-line);
+        border-radius: var(--form-input-border-radius);
+        z-index: 91;
+      }
+
+      .icon {
+        display: block;
+        position: relative;
+        top: -1px;
+        &:hover + .duc-description-text { display: block; }
+      }
     }
   }
-}
 
-.error-popover.popover.show {
-  border-color: var(--color-error);
+  div.form-control {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    border-radius: 0;
+  }
 
-  .popover-body {
-    background-color: #fff7f7;
+  input, select, textarea {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    color: var(--text-color-ultra-dark);
+    font-size: var(--text-size-regular);
+    background-color: var(--white, #fff);
+    border: 1px solid var(--color-line);
+    border-radius: var(--form-input-border-radius);
+    box-sizing: border-box;
+    transition: border-color .15s ease, box-shadow .15s ease;
 
-    .error-icon {
-      margin-top: 5px;
-      margin-right: 8px;
+    &::placeholder { color: var(--text-color-disabled); }
+
+    &:hover { border-color: var(--text-color-medium); }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-highlight);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
     }
   }
 
-  .error-icon {
-    margin-top: 5px;
+  textarea {
+    height: auto;
+    min-height: 88px;
+    padding: 10px 14px;
+    line-height: 1.5;
   }
 
-  .arrow::before {
-    border-top-color: #ff625a;
-    border-bottom-color: #ff625a;
-  }
-
-  .arrow:after {
-    border-top-color: #fff7f7 !important;
-    border-bottom-color: #fff7f7 !important;
-  }
-}
-
-.grey-price-popover.popover.show {
-  .popover-body {
-    background-color: #f1f1f3;
-    box-shadow: 0 0 5px 1px #d6d6d6;
-  }
-
-  .arrow:after {
-    border-top-color: #f1f1f3 !important;
-    border-bottom-color: #f1f1f3 !important;
-  }
-}
-
-.product-instance-proof-modal {
-  position: relative;
-}
-
-.root-preview {
-  background-color: var(--image-box-background-color);
-}
-
-.mobileImageLabel {
-  display: none;
-  @media (max-width: theme.$md) {
-    display: block;
-  }
-}
-
-.desktopImageLabel {
-  @media (max-width: theme.$md) {
-    display: none;
+  .duc-error {
+    margin-top: 6px;
+    color: var(--color-error);
+    font-size: var(--text-size-regular);
   }
 }

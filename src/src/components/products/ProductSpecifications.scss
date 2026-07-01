@@ -59,3 +59,11 @@ body.xmpie-theme .product-layout .main-wrapper {
     margin-top: auto;
   }
 }
+/* McFaddin: on dynamic product pages, make the specs span the full
+   right column and left-align with the summary/price above it
+   (base rule caps it at 600px with 60px side margins, which indents
+   and narrows it). Keep the 48px top gap from the Add to Cart block. */
+body.xmpie-theme .main-wrapper.dynamic .mcf-product-specs {
+  max-width: none;
+  margin: 48px 0 0;
+}

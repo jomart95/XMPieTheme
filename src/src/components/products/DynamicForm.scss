@@ -96,3 +96,216 @@
     color: var(--text-color-dark);
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * McFaddin: single-field dynamic product (e.g. pastry-tag price).
+ * A one-field form takes DynamicForm's no-section branch, rendering a
+ * bare .duc-wrapper outside .product-properties (so it gets no canonical
+ * duc styling). Lay the label and the input out on ONE ROW: the label
+ * sits left, the input fills the rest of the line. Errors wrap below.
+ * ------------------------------------------------------------------ */
+.duc-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;   /* push Price + box to the right column edge */
+  gap: 10px 16px;
+  width: 100%;
+  margin-bottom: 28px;
+
+  &.hidden { display: none; }
+
+  /* label block (title + optional info icon) — sits inline, left of input */
+  .duc-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    flex: 0 0 auto;
+    align-self: center;
+
+    .duc-title {
+      font-size: var(--text-size-label);
+      color: var(--text-color-ultra-dark);
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+
+      .required-field { color: var(--color-error); margin-left: 2px; }
+    }
+
+    .duc-description {
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+
+      .duc-description-text {
+        white-space: pre-wrap;
+        display: none;
+        position: absolute;
+        margin-top: 5px;
+        padding: 10px;
+        max-width: 350px;
+        min-width: 170px;
+        background: var(--color-fill);
+        color: var(--text-color-disabled);
+        text-align: center;
+        border: 1px solid var(--color-line);
+        border-radius: var(--form-input-border-radius);
+        z-index: 91;
+      }
+
+      .icon {
+        display: block;
+        position: relative;
+        top: -1px;
+        &:hover + .duc-description-text { display: block; }
+      }
+    }
+  }
+
+  /* the input widget wrapper (div.a{hash}) — capped so the price box
+     reads as a field, not a full-width bar. Sits right after the label. */
+  > div:not(.duc-head):not(.duc-error) {
+    flex: 0 1 220px;
+    max-width: 220px;
+    align-self: center;
+  }
+
+  div.form-control {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    border-radius: 0;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    color: var(--text-color-ultra-dark);
+    font-size: var(--text-size-regular);
+    background-color: var(--white, #fff);
+    border: 1px solid var(--color-line);
+    border-radius: var(--form-input-border-radius);
+    box-sizing: border-box;
+    transition: border-color .15s ease, box-shadow .15s ease;
+
+    &::placeholder { color: var(--text-color-disabled); }
+    &:hover { border-color: var(--text-color-medium); }
+    &:focus {
+      outline: none;
+      border-color: var(--color-highlight);
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  textarea {
+    height: auto;
+    min-height: 88px;
+    padding: 10px 14px;
+    line-height: 1.5;
+  }
+
+  /* error wraps onto its own full-width line under the field */
+  .duc-error {
+    flex: 1 1 100%;
+    margin-top: 2px;
+    color: var(--color-error);
+    font-size: var(--text-size-regular);
+  }
+}
+/* ============================================================
+   McFaddin — dynamic product page: final polish overrides.
+   Paste at the END of DynamicForm.scss (REPLACES the previous
+   polish block). Self-contained; remove as a block to undo.
+   ============================================================ */
+@media (min-width: 993px) {
+
+  /* 1 — hide View Proof on dynamic pages */
+  body.xmpie-theme .main-wrapper.dynamic .view-proof-wrapper {
+    display: none !important;
+  }
+
+  /* 2 — more gap between the top header and the product name
+         (shifts the whole right column down) */
+  body.xmpie-theme .main-wrapper.dynamic .product-details {
+    padding-top: 66px !important;
+  }
+
+  /* 3 — reorder the properties column: PRICE on top, QTY below.
+         (In markup QTY comes first, then Price — flex order flips them.) */
+  body.xmpie-theme .main-wrapper.dynamic .product-instance-properties {
+    display: flex !important;
+    flex-direction: column;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .product-instance-properties .duc-wrapper {
+    order: 1;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .product-instance-properties .quantity {
+    order: 2;
+  }
+
+  /* 3a — Price row: left-aligned, small box (fits XX.XX only) */
+body.xmpie-theme .main-wrapper.dynamic .duc-wrapper {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px;
+    margin: 0 0 26px 0 !important;
+
+    label.duc-title {
+      display: inline-block !important;
+      transform: translateY(5px) !important;
+    }
+  }
+
+    
+  }
+  body.xmpie-theme .main-wrapper.dynamic .duc-wrapper .duc-head {
+    margin: 0 !important;
+    flex: 0 0 auto;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .duc-wrapper > div:not(.duc-head):not(.duc-error) {
+    flex: 0 0 92px;
+    max-width: 92px;
+    margin-left: 0;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .duc-wrapper input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  /* 3b — Qty stays right-aligned; fix the box clipping the number */
+  body.xmpie-theme .main-wrapper.dynamic .quantity {
+    justify-content: flex-end !important;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .quantity .product-quantity-component input,
+  body.xmpie-theme .main-wrapper.dynamic .quantity input {
+    height: 40px !important;
+    width: 60px !important;
+    padding: 4px 8px !important;
+    line-height: 1.2 !important;
+    text-align: center;
+    box-sizing: border-box !important;
+  }
+
+  /* push Order QTY flush to the right column edge (match button/summary) */
+  body.xmpie-theme .main-wrapper.dynamic .product-instance-properties .quantity {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  body.xmpie-theme .main-wrapper.dynamic .quantity .product-quantity-component {
+    margin-right: 0 !important;
+  }
+
+  /* 4 — breathing room between Total price and Add to Cart */
+  body.xmpie-theme .main-wrapper.dynamic .right .add-to-cart-button-wrapper {
+    margin-top: 40px !important;
+  }

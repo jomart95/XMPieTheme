@@ -111,7 +111,9 @@ body.xmpie-theme .product-instance .right .add-to-cart-button-wrapper {
 
 // McFaddin: align Save to draft under the Add to Cart button
 body.xmpie-theme .product-instance .right .product-instance-save-to-draft-wrapper {
+  display: flex;
   justify-content: flex-end;
+  margin-top: 4px;
 }
 
 // McFaddin: right-align the whole product detail panel (dynamic + static)
@@ -166,7 +168,7 @@ body.xmpie-theme .product-instance .right {
     position: relative;
   }
   .product-quantity-component .product-quantity::before {
-    content: 'QTY';
+    content: 'Order QTY';
     position: absolute;
     right: 100%;
     bottom: 0;
@@ -187,4 +189,17 @@ body.xmpie-theme .product-instance .right {
   .product-order-summary .summary-table { width: 100%; margin-left: 0; }
 
   .price-display:has(+ .price-top-marker) { display: none; }
+}
+/* ------------------------------------------------------------------ *
+ * McFaddin: on dynamic product pages the right column is bounded
+ * (see StaticProduct.scss &.dynamic grid). The shared 665px button cap
+ * above is tuned for static's wider column and doesn't apply cleanly
+ * here. Real ancestor chain is .main-wrapper.dynamic > .right, so scope
+ * to that (higher specificity than the 665 rule, and it actually
+ * matches the DOM). Full-width wrapper + flex-end aligns the button's
+ * right edge to the summary/column edge. Static is untouched.
+ * ------------------------------------------------------------------ */
+body.xmpie-theme .main-wrapper.dynamic .right .add-to-cart-button-wrapper {
+  max-width: 100%;
+  justify-content: flex-end;
 }

@@ -79,3 +79,22 @@
     top: calc(var(--header-height-desktop) + 34px + 20px);
   }
 }
+/* ------------------------------------------------------------------ *
+ * McFaddin: widen the RIGHT column on dynamic product pages only.
+ *
+ * Dynamic pages (e.g. pastry-tag price) render a narrower right column
+ * than static, so the Add to Cart button crowds/overflows its edge.
+ * The base grid is 40% / 60% (line 11); here we shift the ratio for
+ * dynamic ONLY so the right column gains width and the button sits
+ * inside it naturally. Static's 40/60 is untouched.
+ *
+ * >>> DIAL: adjust the two percentages below. They must sum to 100%.
+ *     Widen the right column by lowering the left %. Start at 32/68;
+ *     nudge left down to 30/70 (or 28/72) if the button still crowds,
+ *     but watch the left preview — too low and the tag image cramps.
+ * ------------------------------------------------------------------ */
+@media (min-width: theme.$md + 1) {
+  .product-layout .main-wrapper.dynamic {
+    grid-template-columns: 50% 50%;   /* left% / right%  — must total 100% */
+  }
+}
