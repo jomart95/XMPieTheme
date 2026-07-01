@@ -5,6 +5,14 @@
   box-sizing: border-box;
   border-top: 2px solid #e3e7ee;
 
+  /* Top placement (selector mode, under the header): separator below, not above. */
+  &.is-top {
+    margin: 0 auto 24px;
+    padding: 50px 50px 36px;
+    border-top: none;
+    border-bottom: 2px solid #e3e7ee;
+  }
+
   .mcf-cross-sell-title {
     font-family: var(--font-family-condensed, 'Roboto Condensed', sans-serif);
     font-weight: 900;

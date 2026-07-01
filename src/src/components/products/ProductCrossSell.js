@@ -112,12 +112,12 @@ const CrossSellCard = ({ product }) => {
 
   return (
     <div className="mcf-cross-sell-card">
-      <LinkAria className="mcf-cross-sell-card-image" to={url}>
+      <LinkAria className="mcf-cross-sell-card-image" to={url} reloadDocument={!isStatic}>
         <img src={img} alt={product.Name} />
       </LinkAria>
       <div className="mcf-cross-sell-card-body">
         {product.__cat && <span className="mcf-cross-sell-card-cat">{product.__cat}</span>}
-        <LinkAria className="mcf-cross-sell-card-name" to={url}>{product.Name}</LinkAria>
+        <LinkAria className="mcf-cross-sell-card-name" to={url} reloadDocument={!isStatic}>{product.Name}</LinkAria>
 
         <div className="mcf-cross-sell-card-buy">
           {isStatic ? (
@@ -152,7 +152,7 @@ const CrossSellCard = ({ product }) => {
               }
             </React.Fragment>
           ) : (
-            <LinkAria className="mcf-cross-sell-customize" to={url}>
+            <LinkAria className="mcf-cross-sell-customize" to={url} reloadDocument>
               Customize
             </LinkAria>
           )}
@@ -162,43 +162,16 @@ const CrossSellCard = ({ product }) => {
   )
 }
 
-const ProductCrossSell = ({ excludeId }) => {
+// Data hook — runs the fetch + selection ONCE and reports which mode fired.
+// The parent (StaticProduct) uses `mode` to decide placement: 'category' -> top
+// selector, 'random' -> bottom cross-sell. Presentation lives in the component below.
+export const useCrossSell = (excludeId) => {
   const [products, setProducts] = useState([])
-  const trackRef = useRef(null)
-  const [canLeft, setCanLeft] = useState(false)
-  const [canRight, setCanRight] = useState(false)
-
-  const updateArrows = useCallback(() => {
-    const el = trackRef.current
-    if (!el) return
-    const maxScroll = el.scrollWidth - el.clientWidth
-    setCanLeft(el.scrollLeft > 2)
-    setCanRight(el.scrollLeft < maxScroll - 2)
-  }, [])
-
-  const page = (dir) => {
-    const el = trackRef.current
-    if (!el) return
-    const card = el.querySelector('.mcf-cross-sell-card')
-    const gap = parseFloat(getComputedStyle(el).columnGap) || 0
-    const cardW = card ? card.getBoundingClientRect().width + gap : el.clientWidth
-    const perView = Math.max(1, Math.floor((el.clientWidth + gap) / cardW))
-    glideBy(el, dir * perView * cardW)
-  }
+  const [mode, setMode] = useState(null)            // 'category' | 'random' | null
+  const [categoryName, setCategoryName] = useState(null)
 
   useEffect(() => {
-    updateArrows()
-    const el = trackRef.current
-    if (!el) return undefined
-    el.addEventListener('scroll', updateArrows, { passive: true })
-    window.addEventListener('resize', updateArrows)
-    return () => {
-      el.removeEventListener('scroll', updateArrows)
-      window.removeEventListener('resize', updateArrows)
-    }
-  }, [products, updateArrows])
-
-  useEffect(() => {
+    let cancelled = false
     ;(async () => {
       try {
         // Walk the full category tree (top level + all subcategories) so products
@@ -235,6 +208,7 @@ const ProductCrossSell = ({ excludeId }) => {
           : 0
 
         let chosen
+        let resolvedMode
         if (currentCatId && categoryTotal >= CATEGORY_MIN) {
           // Category branch: show this product's category (any type), minus itself.
           const seen = new Set()
@@ -243,6 +217,7 @@ const ProductCrossSell = ({ excludeId }) => {
             seen.add(p.ID)
             return true
           }).slice(0, CROSS_SELL_COUNT)
+          resolvedMode = 'category'
         } else {
           // Fallback branch: random STATIC products (quick-add) from across the store.
           const seen = new Set()
@@ -252,19 +227,66 @@ const ProductCrossSell = ({ excludeId }) => {
             return true
           })
           chosen = shuffle(staticPool).slice(0, CROSS_SELL_COUNT)
+          resolvedMode = 'random'
         }
-        setProducts(chosen)
+
+        if (!cancelled) {
+          setProducts(chosen)
+          setMode(chosen.length ? resolvedMode : null)
+          setCategoryName(current ? current.__cat : null)
+        }
       } catch (e) {
-        // leave empty -> renders nothing
+        // leave empty -> nothing renders
       }
     })()
+    return () => { cancelled = true }
   }, [excludeId])
 
-  if (products.length === 0) return null
+  return { products, mode, categoryName }
+}
+
+// Presentational carousel. Receives already-selected products + a title; the
+// parent decides top vs bottom placement (`placement` just tweaks the frame).
+const ProductCrossSell = ({ products = [], title, placement = 'bottom' }) => {
+  const trackRef = useRef(null)
+  const [canLeft, setCanLeft] = useState(false)
+  const [canRight, setCanRight] = useState(false)
+
+  const updateArrows = useCallback(() => {
+    const el = trackRef.current
+    if (!el) return
+    const maxScroll = el.scrollWidth - el.clientWidth
+    setCanLeft(el.scrollLeft > 2)
+    setCanRight(el.scrollLeft < maxScroll - 2)
+  }, [])
+
+  const page = (dir) => {
+    const el = trackRef.current
+    if (!el) return
+    const card = el.querySelector('.mcf-cross-sell-card')
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0
+    const cardW = card ? card.getBoundingClientRect().width + gap : el.clientWidth
+    const perView = Math.max(1, Math.floor((el.clientWidth + gap) / cardW))
+    glideBy(el, dir * perView * cardW)
+  }
+
+  useEffect(() => {
+    updateArrows()
+    const el = trackRef.current
+    if (!el) return undefined
+    el.addEventListener('scroll', updateArrows, { passive: true })
+    window.addEventListener('resize', updateArrows)
+    return () => {
+      el.removeEventListener('scroll', updateArrows)
+      window.removeEventListener('resize', updateArrows)
+    }
+  }, [products, updateArrows])
+
+  if (!products || products.length === 0) return null
 
   return (
-    <section className="mcf-cross-sell">
-      <h2 className="mcf-cross-sell-title">You Might Also Need</h2>
+    <section className={`mcf-cross-sell${placement === 'top' ? ' is-top' : ''}`}>
+      <h2 className="mcf-cross-sell-title">{title}</h2>
       <div className="mcf-cross-sell-carousel">
         <button
           type="button"

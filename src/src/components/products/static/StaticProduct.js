@@ -16,7 +16,7 @@ import ProductStickyPrice from '../ProductStickyPrice'
 import ProductThumbnailsPreview from '../dynamic/ProductThumbnailsPreview'
 import ProductLayout from '../ProductLayout'
 import ProductSpecifications from '../ProductSpecifications'
-import ProductCrossSell from '../ProductCrossSell'
+import ProductCrossSell, { useCrossSell } from '../ProductCrossSell'
 import Price from './Price'
 import {
   convertPropertiesFromApiToPropertiesObject,
@@ -955,8 +955,12 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
   const onElementClicked = (isSelected) => setIsUEditControlsVisible(isSelected && !UeditProvider.fullyLocked)
   const isUEdit = uEditEnabled(product)
 
+  const { products: crossSellProducts, mode: crossSellMode, categoryName: crossSellCategory } = useCrossSell(product.ID)
+
   return (
     <div classname="mcf-product-page">
+      {crossSellMode === 'category' &&
+        <ProductCrossSell products={crossSellProducts} title={`More ${crossSellCategory}`} placement="top" />}
     <ProductLayout className="product-instance"
                    dynamic={product.Type === productTypes.DYNAMIC}
                    upload={isNewUpload}
@@ -1210,7 +1214,8 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
       </right>
 
     </ProductLayout>
-      <ProductCrossSell excludeId={product.ID} />
+      {crossSellMode === 'random' &&
+        <ProductCrossSell products={crossSellProducts} title="You Might Also Need" placement="bottom" />}
       </div>
   )
 }
