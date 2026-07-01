@@ -713,3 +713,38 @@ body.xmpie-theme .main-wrapper.static .product-instance-price .total-price {
   font-size: var(--text-size-h4);    /* was h2 (30px) -> h4, ~22px */
   min-height: 0;
 }
+/* McFaddin: green success confirmation that replaces the Add to Cart button after
+   an item is added (button now stays on the page instead of routing to the cart).
+   Mirrors the quick-add success in ProductItem. Scoped to .main-wrapper so it covers
+   BOTH static and dynamic product pages (shared markup in StaticProduct.js); the
+   descendant .add-to-cart-button-wrapper keeps it off the product-grid cards. */
+body.xmpie-theme .main-wrapper .add-to-cart-button-wrapper .add-to-cart-success {
+  margin: auto;
+  color: var(--color-success);
+  font-size: var(--text-size-label);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  animation: mcfAddedFade 3s forwards;
+
+  .success-checkmark-icon-wrapper {
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+
+    .success-checkmark-icon {
+      fill: var(--color-success);
+    }
+  }
+
+  @media (max-width: theme.$sm) {
+    font-size: var(--text-size-fineprint);
+  }
+}
+
+@keyframes mcfAddedFade {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -131,6 +131,9 @@ const StaticProduct = ({
   const [isCartOrderItem, setIsCartOrderItem] = useState(false)
   const [isOrderItemSavedToDraft, setIsOrderItemSavedToDraft] = useState(false)
   const saveToDraftTimerRef = useRef(null);
+  const [isAddedToCart, setIsAddedToCart] = useState(false)
+  const [isAddingToCart, setIsAddingToCart] = useState(false)
+  const addedToCartTimerRef = useRef(null)
   const showHeaderFooter = StoreType === 4 && StoreAttributes.find(attr => attr.Name === 'ShowHeaderAndFooter' && attr.Value === 'True')
   const allowSaveToDraft = (StoreType === 1 || StoreType === 2 || showHeaderFooter) && !process.env.REACT_APP_WEB_COMPONENT
 
@@ -723,6 +726,8 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
   }
 
   const addToCartOrSave = async (skipPropertiesPush = false) => {
+    setIsAddingToCart(true)
+    try {
     // If product is out of stock - save it for later
     const productStockQuantity = product.Inventory && product.Inventory.Quantity
     const minQuantity = product.Configuration &&
@@ -766,7 +771,22 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
       }
       await pushCart(orderItem.ID)
     }
-    reRouteToCart(StoreType, themeContext.get('cartUrl'))
+    // Classic ASPX cart (StoreType 3) keeps its redirect handoff; NG stores stay on the page after adding.
+    if (StoreType === 3 && themeContext.get('cartUrl')) {
+      reRouteToCart(StoreType, themeContext.get('cartUrl'))
+    } else {
+      if (StoreAttributes.find((attr) => attr.Name === 'ForceCartAspx' && attr.Value === 'False')) {
+        await UStoreProvider.state.store.loadCartItemsCount()
+      }
+      setApprovalModalOpen(false)
+      setPageState(State.initial)
+      setIsAddedToCart(true)
+      if (addedToCartTimerRef.current) clearTimeout(addedToCartTimerRef.current)
+      addedToCartTimerRef.current = setTimeout(() => setIsAddedToCart(false), 3000)
+    }
+    } finally {
+      setIsAddingToCart(false)
+    }
   }
 
   const saveToDraft = async() => {
@@ -802,6 +822,8 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
 
   const handleAddToCartButtonClick = async () => {
     if (pageState !== State.initial) return
+    if (isAddedToCart) return
+    if (isAddingToCart) return
     // Error checking
     if (uploadError) {
       setForceAddToCartButtonPopper(true)
@@ -1084,18 +1106,30 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
                                                     excelPricingEnabled={excelPricingEnabled} isUEdit={isUEdit}/>}
         <div className="add-to-cart-button-wrapper">
           <Slot name="ng_product_above_add_to_cart" data={product}/>
-          <div
-            className="button button-primary add-to-cart-button"
-            id="add-to-cart-button"
-            onClick={handleAddToCartButtonClick}
-            tabIndex="0"
-          >
-            {
-              pageState === State.loading ||
-              pageState === State.calculatingPrice
-                ? <LoadingDots/>
-                : getContinueButtonText()}
-          </div>
+          {!isAddedToCart &&
+            <div
+              className="button button-primary add-to-cart-button"
+              id="add-to-cart-button"
+              onClick={handleAddToCartButtonClick}
+              tabIndex="0"
+            >
+              {
+                pageState === State.loading ||
+                pageState === State.calculatingPrice ||
+                isAddingToCart
+                  ? <LoadingDots/>
+                  : getContinueButtonText()}
+            </div>
+          }
+          {isAddedToCart &&
+            <div className="add-to-cart-success">
+              <div>{t('ProductItem.Added_successfully_message')}
+                <span className="success-checkmark-icon-wrapper">
+                  <Icon name="checkmark_green.svg" width="20px" height="20px" className="success-checkmark-icon"/>
+                </span>
+              </div>
+            </div>
+          }
         </div>
 <ProductSpecifications productModel={product} />
         {
@@ -1176,7 +1210,7 @@ const loadProductProperties = async (updatedOrderItem, initialQuantity, product,
       </right>
 
     </ProductLayout>
-      <ProductCrossSell />
+      <ProductCrossSell excludeId={product.ID} />
       </div>
   )
 }
